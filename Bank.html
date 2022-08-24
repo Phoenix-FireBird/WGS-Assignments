@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Edit Remove HTML Table Row</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            label{
+                text-align: center;
+                font-size: medium;
+            }
+            input[type=text]{
+                background-color: burlywood;
+                text-align: center;
+                font-size: medium;
+            }
+            input[type=date]{
+                background-color: burlywood;
+                color: black;
+            }
+            input[type=number]{
+                background-color: burlywood;
+                text-align: center;
+                font-size: medium;
+            }
+            input[type=button]{
+                padding-block: 5px;
+                padding-left: 30px;
+                padding: auto;
+                padding-right: 30px;
+                background-color:burlywood;
+                text-align: center;
+                font-size: medium;
+            }
+            textarea{
+                background-color: burlywood;
+                font-size: medium;
+            }
+            .abc{
+                border: 1px solid black;
+                border-collapse: collapse;
+                text-align: center;
+                padding: auto;
+            }
+            .xyz{
+                border: 1px solid black;
+                border-collapse: collapse;
+                text-align: center;
+                padding: auto;
+                background-color: black;
+                color: white;
+            }
+            .deleteBtn{
+                background-color: red;
+                color: white;
+            }
+            .updateBtn{
+                background-color:green;
+                color: white;
+            }
+        </style>
+        <script>
+            var num =0;
+            var object = [];
+            var res=" ";   
+            
+            
+            function retriveData(){
+                var element1 = document.getElementById("txt1");
+                var element2 = document.getElementById("txt2");                                
+                var element3 = document.getElementById("address1");
+                var element4 = document.getElementById("dob1");
+                var radios = document.getElementsByName("Gender");
+                var element5 = Array.from(radios).find(radio => radio.checked).value;
+                var element6 = document.getElementById("chk1");
+                var element7 = document.getElementById("chk2");
+                var element8 = document.getElementById("chk3");
+                var element9 = document.getElementById("chk4");
+
+                var cboxes = document.getElementsByName("AccType");
+                    var len = cboxes.length;
+                    var res = " ";
+                    for (var i=0; i<len; i++) {
+                        if(cboxes[i].checked){
+                            res += cboxes[i].value +"\t";
+                        }
+                    }
+
+                var temp={order:num,AccId:element1.value,Name:element2.value,Address:element3.value,DOB:element4.value,Gender:element5,Acc_Type:res};
+                num++;
+                object.push(temp);
+
+                var output2=document.getElementById("datatable");
+                var output1=document.getElementById("datatable");
+                output1.innerHTML=output2.innerHTML="<tr><th class='xyz'>Sr.No.</th>"+"<th class='xyz'>AccId</th>"+"<th class='xyz'>Name</th>"+ "<th class='xyz'>Address</th>" +
+                                                    "<th class='xyz'>DOB</th>"+"<th class='xyz'>Gender</th>"+"<th class='xyz'>Acc_Type</th></tr>";
+                for(let i=0; i<object.length; i++){
+                    output2.innerHTML+="<tr><td class='abc'>"+ object[i].order+"<td class='abc'>"+ object[i].AccId+"</td>" +"<td class='abc'>"+ object[i].Name +"</td>" +
+                                         "<td class='abc'>"+ object[i].Address +"</td>"+"<td class='abc'>"+ object[i].DOB +"</td>"+
+                                         "<td class='abc'>"+ object[i].Gender +"</td>"+"<td class='abc'>"+ object[i].Acc_Type +"</td>"+
+                                         "<td><button class='updateBtn' onclick='rowUpdate()'>Update</button></td>"+"<td><button class='deleteBtn' onclick='rowDelete()'>Delete</button></td></tr>";
+                }
+            }
+
+            function rowDelete(){
+                var  rIndex = document.getElementById('datatable');
+                rIndex.addEventListener('click',onDeleteRow);
+            }
+
+            function onDeleteRow(e){
+                if(!e.target.classList.contains('deleteBtn')){
+                    return;
+                }
+                const btn = e.target;
+                btn.closest("tr").remove();
+            }
+            
+            function rowUpdate(){
+                var  rIndex = document.getElementById('datatable');
+                rIndex.addEventListener('click',onUpdateRow);
+            }
+
+            function onUpdateRow(e){
+                if(!e.target.classList.contains('updateBtn')){
+                    return;
+                }
+                document.getElementById("myButton1").value="Update";
+                var cells = document.getElementsByClassName("deleteBtn"); 
+                for (var i = 0; i < cells.length; i++) { 
+                    cells[i].disabled = true;
+                }
+                var cells2 = document.getElementsByClassName("updateBtn"); 
+                for (var x = 0; x < cells2.length; x++) { 
+                    cells2[x].disabled = true;
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div style="border:black; border-width:5px; border-style:solid;">
+            <h2 style="color:goldenrod;">Welcome To Bank Details</h2>
+            <label style="padding-right: 35px;">ActId:</label>
+            <input type="text" id="txt1" placeholder="Enter ActId." />
+            <label style="padding-left: 100px;">DOB:</label>
+            <input type="date" id="dob1" placeholder="Enter Date Of Birth."/>
+            <br>
+            <br>
+            <label style="padding-right: 10px;">ActName:</label>
+            <input type="text" id="txt2" placeholder="Enter ActName."/>
+            <label style="padding-left: 100px;">Gender:</label>
+            <input type="radio" id="radio1" value="Male" name="Gender">Male</input>
+            <input type="radio" id="radio2" value="Female" name="Gender">Female</input>
+            <br>
+            <br>
+            <label style="padding-right: 18px;">Address:</label>
+            <textarea rows="5" cols="30" id="address1" placeholder="Enter Address here..."></textarea>
+            <label style="padding-left: 60px;">AccType:</label>
+            <input type="checkbox" id="chk1" class="check1" value="SB" name="AccType"/>
+            <label>SB</label>
+            <input type="checkbox" id="chk2" class="check1" value="CB" name="AccType"/>
+            <label>CB</label>
+            <br>   
+            <label style="padding-left: 450px;"></label>         
+            <input type="checkbox" id="chk3" class="check1" value="FD" name="AccType"/>
+            <label>FD</label>
+            <input type="checkbox" id="chk4" class="check1" value="Loan" name="AccType"/>
+            <label>Loan</label>
+            <br>
+            <br>
+            <label style="padding-left: 450px;"></label>
+            <input onclick="retriveData()" type="button" value="Submit" id="myButton1"></input>
+            <br>
+            <br>
+        </div>
+        <div style="border:black; border-width:5px; border-style:solid;padding-bottom: 100px;">
+            <div id="msg1" style="text-align: center;"></div>
+            <table id="datatable">
+
+            </table>
+        </div>
+    </body>
+</html>
