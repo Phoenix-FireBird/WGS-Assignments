@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+    background-origin: padding-box;
+    border-color: black;
+    border-style: solid;
+  float: left;
+  width: 100%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width:50%;
+ 
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+</style>
+</head>
+<body>
+
+<h2>Pranit Waghmare</h2>
+
+<div class="row1">
+  <div class="column1" style="background-color:rgb(255, 255, 255);">
+   
+     
+<div class="row">
+  <div class="column" >
+    ActId
+    <input type="number" name="ActId" id="ActId">
+
+
+
+
+    Actname
+    <input type="text" name="Actname" id="Actname">
+
+    Address
+    <input type="text" name="Address" id="Address">
+  </div>
+  <div class="column" >
+    Birth Date
+    <input type="date" id="Birth Date" name="Birth Date"
+    value=""
+    min="1950-01-01" max="2022-12-31">
+				
+					Gender
+					<label for="Gender"></label>
+
+                        <select name="Gender" id="Gender">
+                          <option >Male</option>
+                          <option >Female</option>
+                          <option value="Others">Others</option>
+                        </select>
+			
+              
+					AcctType
+					<label for="AcctType"></label>
+
+                        <select name="AcctType" id="AcctType">
+                          <option value="SB">SB</option>
+                          <option value="CB">CB</option>
+                          <option value="FD">FD</option>
+                          <option value="LOAN">LOAN</option>
+                        </select>
+                        
+				
+            
+				 <input type="button" name="button" id="btn" value="Submit" onclick="AddRow()">
+  </div>
+</div>   
+</div>
+
+  <div class="column1" style="background-color:#bbb;">
+    
+<center>
+    <table border="5" id="show">
+        <thead>
+            <tr>
+                <th>ActId</th>
+                <th>Actname</th>
+                <th>Address</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+                <th>AcctType</th>
+            </tr>
+        </thead>
+    </table>
+  </center>
+  <div>
+    <center>
+    <input type="button" name="deletebtn" id="btn" value="Delete" onclick="deleteFunction()">
+    <button type="button" 
+        id="updateButton"  class="btn btn-primary" onclick="AddRow()">Update</button>
+      </center>
+      </div>
+  </div>
+</div>
+<script>
+		
+    var list1 = [];
+    var list2 = [];
+    var list3 = [];
+    var list4 = [];
+    var list5 = [];
+    var list6 = [];
+
+    var n = 1;
+    var x = 0;
+
+    function AddRow(){
+
+        var AddRown = document.getElementById('show');
+        var NewRow = AddRown.insertRow(n);
+
+        list1[x] = document.getElementById("ActId").value;
+        list2[x] = document.getElementById("Actname").value;
+        list3[x] = document.getElementById("Address").value;
+        list4[x] = document.getElementById("Birth Date").value;
+        list5[x] = document.getElementById("Gender").value;
+        list6[x] = document.getElementById("AcctType").value;
+
+        var cel1 = NewRow.insertCell(0);
+        var cel2 = NewRow.insertCell(1);
+        var cel3 = NewRow.insertCell(2);
+        var cel4 = NewRow.insertCell(3);
+        var cel5 = NewRow.insertCell(4);
+        var cel6 = NewRow.insertCell(5);
+
+        cel1.innerHTML = list1[x];
+        cel2.innerHTML = list2[x];
+        cel3.innerHTML = list3[x];
+        cel4.innerHTML = list4[x];
+        cel5.innerHTML = list5[x];
+        cel6.innerHTML = list6[x];
+
+
+        n++;
+        x++;
+    }
+function deleteFunction() {
+  document.getElementById("show").deleteRow(1);
+  n--;
+  x--;
+  
+}
+
+   
+</script>
+</body>
+</html>
