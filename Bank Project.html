@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div style="border:solid"><br>
+                     <label> ActId:</label>
+					<input type="number" name="ActId" id="ActId"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+                    <label>DOB:</label>
+					<input type="date" id="DOB" name="Birth Date"
+                        value="2018-07-22"
+                        min="1950-01-01" max="2022-12-31"><br><br>
+				    <label> Actname: </label>
+					<input type="text" name="Actname" id="Actname"> &nbsp;&nbsp;&nbsp;
+                    <label> Gender: </label>
+					<label for="Gender"></label>
+
+                        <select name="Gender" id="Gender">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          
+                        </select><br><br>
+				
+					<label> Address: </label>
+					<input type="text" name="Address" id="Address"> &nbsp;&nbsp;&nbsp;
+                   
+				<label> AcctType: </label>
+					<label for="AcctType"></label>
+
+                        <select name="AcctType" id="AcctType">
+                          <option value="SB">SB</option>
+                          <option value="CB">CB</option>
+                          <option value="FD">FD</option>
+                          <option value="LOAN">LOAN</option>
+                        </select> <br> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				 <input type="button" name="button" id="btn" value="Submit" onclick="Insert()"><br><br>
+                    </div>
+                    <div style="border:solid"><br>
+                            
+		<table border="2" id="show">
+			<thead>
+				<tr>
+					<th>ActId</th>
+					<th>Actname</th>
+					<th>Address</th>
+					<th>DOB</th>
+                    <th>Gender</th>
+                    <th>AcctType</th>
+				</tr>
+			</thead>
+            <tbody id="tbl"></tbody>
+		</table><br><br> &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" name="button" id="btn" value="Update" onclick="Insert()"><br><br> &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" name="button" id="btn" value="Delete"><br><br>
+		
+	</center>
+<script>
+        function Insert()
+        {
+          var a=document.getElementById('ActId').value;
+          var b=document.getElementById('Actname').value;
+          var c=document.getElementById('Address').value; 
+          var d=document.getElementById('DOB').value; 
+          var e=document.getElementById('Gender').value;
+          var f=document.getElementById('AcctType').value;  
+          
+          
+          var table = `<tr>
+                          <td>${a}</td>
+                          <td>${b}</td>
+                          <td>${c}</td>
+                          <td>${d}</td>
+                          <td>${e}</td>
+                          <td>${f}</td>
+                        </tr>`;
+          document.getElementById('tbl').innerHTML += table;
+        }
+      </script>
+</body>
+</html>
