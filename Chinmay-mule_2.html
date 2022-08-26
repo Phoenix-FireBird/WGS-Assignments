@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Info</title>
+  <style>
+        tr,th,td {
+            border: 1px solid blueviolet;
+            background-color: pink;
+            }
+        
+        p{
+            color: royalblue;
+            font-size: medium;
+        }
+        .col {
+            background-color: rgb(10, 75, 75);
+            color: aliceblue;
+        }
+        div{
+          width: 100%; 
+          padding: 5px;
+          border: 2px;
+          margin: 5px;
+          background-color: beige;
+        }
+        table{
+          background-color: teal;
+          width: 500px;
+        }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div>
+      <h1>Personal Info</h1>
+
+      <label for="id"><b>ID</b></label><br>
+      <input class="d1" type="text" id="id" name="id" placeholder="Enter ID" value="007"><br>
+      
+      <label for="name"><b>Name:</b></label><br>
+      <input class="d1" type="text" id="name" name="name" placeholder="Name" value="Chinmay"><br>
+
+      <label for="add"><b>Address:</b></label><br>
+      <input class="d1" type="text" id="add" name="address" placeholder="Address" value="Kalyan"><br>
+
+      <label for="dob"><b>DOJ:</b></label><br>
+      <input class="d1" type="datetime" id="dob" name="dob" placeholder="DOB" value="3-08-2022"><br>
+      <br><br>
+    </div>
+
+    <label>Select Gender</label>
+            <div >
+                <select id="gen" >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+    <br><br>
+
+
+    <p>Choose Account type:</p>
+    <div>
+    <input type="checkbox" id="SB" name="type" value="SB" checked>
+    <label for="bike">SB</label>
+    </div>
+    <div>
+    <input type="checkbox" id="Loan" name="type" value="Loan" >
+    <label for="scooter">Loan</label>
+    </div>
+    <div>
+    <input type="checkbox" id="CD" name="type" value="CD">
+    <label for="car">CD</label>
+    </div>
+    <div>
+    <input type="checkbox" id="FD" name="type" value="FD">
+    <label for="auto">FD</label>
+    </div>
+    <div>
+    
+    </div>
+    
+
+    <button type="button" name="button" id="btn" value="Add" onclick="ret()">SUBMIT</button>
+    
+    <button type="button" name="button" id="btn" value="Add" onclick="DeleteRows_all()">DEL</button>
+
+  </div>
+  <br><br>
+  <table id="t2">
+    <thead>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>DOB</th>
+      <th>Gender</th>
+      <th>Account Type</th>
+      <th>Del button</th>
+      <th>Update button</th>
+    </thead>
+    <tbody id="tb1"></tbody>
+
+  </table>
+
+
+
+  <script>
+    let count = 0;
+
+      function del()
+      {
+        
+        var table = document.getElementById('del')
+        table.deleteRow(-1);  
+      
+      }
+
+      function del_row(){
+        
+        var lol = document.getElementById('tb1');
+
+        console.log(lol)
+        lol.deleteRow(0)
+
+      }
+
+
+      
+      function DeleteRows_all() {
+        var rowCount = t2.rows.length;
+        for (var i = rowCount - 1; i > 0; i--) {
+            t2.deleteRow(i);
+        }
+      }
+
+
+      function ret(){
+
+      
+      var id = document.getElementById("id").value;
+      var name = document.getElementById("name").value;
+      var address = document.getElementById("add").value;
+      var dob = document.getElementById("dob").value;
+      var gender = document.getElementById('gen').value;
+      
+
+      var temp =''
+
+      var checkboxes = document.getElementsByName('type');
+    for (var checkbox of checkboxes)
+    {
+        if (checkbox.checked) {
+            temp = checkbox.value + ' ' + temp;
+        }
+    }
+
+      
+
+      var table = `<tr id="${count}">
+                      <td>${id}</td>
+                      <td>${name}</td>
+                      <td>${address}</td>
+                      <td>${dob}</td>
+                      <td>${gender}</td>
+                      <td>${temp}</td>
+                      <td><button type="button" value="Delete Row" onclick="del_row()">Delete </button><td>
+                    </tr>`;
+
+      
+
+      document.getElementById("tb1").innerHTML += table;
+      console.log(name);
+      console.log(address)
+      console.log(dob);
+      console.log(gender);
+      console.log(id);
+      console.log(temp)
+
+      count = count+ 1;
+    console.log(count)
+
+    }
+
+  </script>
+
+</body>
+
+</html>
