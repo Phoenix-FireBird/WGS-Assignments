@@ -1,0 +1,165 @@
+<html>
+    <head>
+        <style>
+            label{
+                text-align: center;
+                font-size: medium;
+            }
+            input[type=text]{
+                text-align: center;
+                font-size: medium;
+            }
+            input[type=number]{
+                text-align: center;
+                font-size: medium;
+            }
+            button{
+                text-align: center;
+                font-size: medium;
+            }
+            .shri{
+                border: 1px solid black;
+                border-collapse: collapse;
+                text-align: center;
+                padding: auto;
+            }
+            .vizz{
+                border: 1px solid black;
+                border-collapse: collapse;
+                text-align: center;
+                padding: auto;
+            }
+        </style>
+        <script>
+            var num =0;
+            var object = [];
+            
+            // function
+            
+            function star(){
+                var a = document.getElementById("p");
+                var b = document.getElementById("q");                
+                var c = document.getElementById("r");
+                var d = document.getElementById("s");
+                var ele = document.getElementsByName("gender");
+                var f = Array.from(ele).find(radio => radio.checked);
+                var g = document.getElementById("a");
+                var h = document.getElementById("b");
+                var i = document.getElementById("c");
+                var j = document.getElementById("d");
+
+                var jojo = document.getElementsByName("type");
+                    var len = jojo.length;
+                    var res = " ";
+                    for (var i=0; i<len; i++) {
+                        if(jojo[i].checked){
+                            res += jojo[i].value +"\t";
+                        }
+                    }
+                
+                 
+                // calling    
+
+                var temp={order:num,ActID:a.value,ActName:b.value,Address:c.value,DOB:d.value,Gender:f.value,Acc_Type:res};
+                num++;
+                object.push(temp);
+
+                    
+                // table making 
+
+                var X=document.getElementById("datatable");
+                var Y=document.getElementById("datatable");
+
+                Y.innerHTML=X.innerHTML="<tr><th class='vizz'>Sr.No.</th>"+
+                    "<th class='vizz'>ActID</th>"+ 
+                    "<th class='shri'>ActName</th>" + 
+                    "<th class='shri'>Address</th>" +
+                    "<th class='shri'>DOB</th>" +
+                    "<th class='shri'>Gender</th>"+
+                    "<th class='shri'>AccType</th></tr>";
+
+                    
+                for(let i=0; i<object.length; i++){
+                    X.innerHTML+= "<tr><td class='shri'>"+ object[i].order+
+                                  "<td class='shri'>"+ object[i].ActID+"</td>" +
+                                  "<td class='shri'>"+ object[i].ActName +"</td>" +
+                                  "<td class='shri'>"+ object[i].Address +"</td>" +
+                                  "<td class='shri'>"+ object[i].DOB +"</td>" +
+                                  "<td class='shri'>"+ object[i].Gender +"</td>" +
+                                   "<td class='shri'>"+ object[i].Acc_Type +"</td>" +
+                                   "<td><button onclick='rowUpdate()'>Update</button></td>"+
+                                   "<td><button class='deleteBtn' onclick='rowDelete()'>Delete</button></td></tr>";                     
+                }
+               
+            }
+
+            // delete button calling
+
+            function rowDelete(){
+                var  rIndex = document.getElementById('datatable');
+                rIndex.addEventListener('click',onDeleteRow);
+            }
+
+            function onDeleteRow(e){
+                if(!e.target.classList.contains('deleteBtn')){
+                    return;
+                }
+                const btn = e.target;
+                btn.closest("tr").remove();
+            }
+            
+        </script>
+    </head>
+
+    <body>
+        <div style="border:3px solid black; text-align: center; background-color:burlywood;">
+            <h2>Welcome</h2>
+            <label>ActID:</label>
+            <input type="text" id="p" placeholder="Enter ID"/>
+            <br>
+            <br>
+
+            <label>ActName:</label>
+            <input type="text" id="q" placeholder=" Enter ActName"/>
+            <br>
+            <br>
+
+            <label>Address:</label>
+            <textarea name="text" id="r" cols="30" rows="3" placeholder="Enter Address"></textarea>
+            <br>
+            <br>
+
+            <label> DOB :</label>
+            <input type="datetime-local" id="s" name="datetime" placeholder="DOB">
+            <br>
+            <br>
+
+            <label>Gender:</label>
+            <input type="radio" name="gender" class="gd"  value="Male" checked>
+            <label for="male" >Male</label>
+            <input type="radio" name="gender" class="gd"  value="Female">
+            <label for="female">Female</label>
+            <br>
+            <br>
+
+            <label> AcctType : </label>
+            <label> <input type="checkbox" name="type" id="a"> SB </label>
+            <label> <input type="checkbox" name="type" id="b"> FD </label>
+            <label> <input type="checkbox" name="type" id="c"> CB </label>
+            <label> <input type="checkbox" name="type" id="d"> Loan </label>
+            <br><br>
+            
+
+            <button onclick="star()">Submit</button>
+            <br>
+            <br>
+        </div>
+        
+        <div style="border:5px solid black; padding-bottom: 100px;">
+            <div id="msg1" style="text-align: center;"></div>
+        </br>
+            <table  id="datatable"></table>
+        </div>
+    
+    </body>
+</html>
