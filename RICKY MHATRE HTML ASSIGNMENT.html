@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+Account Details
+<head>
+  <style>
+        tr,th,td {
+            border: 2px solid rgb(204, 0, 255);
+            background-color:rgb(165, 145, 236);    
+        }
+         
+        div {
+         width: 320px;
+         padding: 50px;
+         border: 5px solid rgb(197, 245, 143);
+         margin: 10px;
+        background-color: burlywood;
+        
+        }
+
+      .df {
+         background-color:rgb(255, 172, 104);
+       }
+
+       .colour{
+         background-color: goldenrod;}
+
+      .de{
+         background-color:rgb(230, 134, 134) ;
+
+      }
+  </style>
+</head>
+
+<body class="colour">
+
+    
+
+  <div class="container">
+      
+      <label for="id">Acccount ID</label><br><br>
+      <input type="text" id="id" name="id"><br><br>
+  
+      
+      <label for="name">Name</label><br><br>
+      <input type="text" id="name" name="name"><br><br>
+
+      <label for="add">Address</label><br><br>
+      <input type="text" id="add" name="address"><br><br>
+    
+      <label for="dob">Date of birth</label><br><br>
+      <input type="date" id="dob" name="dob"><br><br>
+      <br>
+
+    
+
+    <label> Gender</label><br>
+            
+                <select id="gen" >
+                    <option value="Male">MALE</option>
+                    <option value="Female">FEMALE</option>
+                    <option value="Other">OTHERS</option>
+                </select>
+            
+
+    <br><br>
+            
+    <label>Account Type</label>
+    <input type="checkbox" name="type" value="SBI">
+    <label>SBI</label>
+   
+    <input type="checkbox" name="type" value="HDFC" >
+    <label>HDFC</label>
+    
+    <input type="checkbox" name="type" value="PNB">
+    <label>PNB</label>
+    
+    <input type="checkbox" name="type" value="ICICI"><br>
+    <label>ICICI</label><br>
+
+    <br><br>
+
+    <button class="df" type="button"  id="btn"  value="Add" onclick="tab()" >Submit</button>
+
+    <button class="de" type="button" value="Delete Row" onclick="document.getElementById('tb').deleteRow(0)">Delete </button>
+    
+    <br><br>
+      
+</div>
+
+    <table>
+
+    <thead>
+      <th>Account Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Date of Birth</th>
+      <th>Gender</th>
+      <th>Account Type</th>
+    </thead>
+    <tbody id="tb"></tbody>
+    </table>
+
+    <script>
+
+    
+
+    function tab(){
+      var id = document.getElementById("id").value;
+      var name = document.getElementById("name").value;
+      var address = document.getElementById("add").value;
+      var dob = document.getElementById("dob").value;
+      var gender = document.getElementById('gen').value;
+      var temp ='';
+      var checkboxes = document.getElementsByName('type');
+
+    for (var checkbox of checkboxes)
+    {
+        if (checkbox.checked) {
+            temp = checkbox.value + ' ' + temp;
+        }
+    }
+
+      var table = `<tr>
+                      <td>${id}</td>
+                      <td>${name}</td>
+                      <td>${address}</td>
+                      <td>${dob}</td>
+                      <td>${gender}</td>
+                      <td>${temp}</td>
+                    </tr>`;
+
+      document.getElementById("tb").innerHTML += table;
+      console.log(id);
+      console.log(name);
+      console.log(address)
+      console.log(dob);
+      console.log(gender);
+      console.log(temp);
+    }
+
+    </script>
+</body>
+</html>
