@@ -1,0 +1,131 @@
+
+*{
+    font-style: oblique;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*box-shadow:5px 4px 5px rgb(175, 171, 171);
+    /* */border-radius:5px ; 
+    
+}
+.outerpart{
+    /* background-color: rgb(171, 207, 207); */
+    background-image: linear-gradient(to bottom,rgb(133 153 151 / 88%),rgb(223 226 227));
+   padding: 5px;
+    height: 500px;
+    /* margin: 20px; */
+    text-align: center;
+    box-shadow: 5px 6px 10px gray;
+}
+
+.underform{
+    position: relative;
+    top: 10px;
+}
+
+.title{
+    color:whitesmoke;
+    border-radius: 20px;
+    text-shadow:2px 4px 5px rgb(54, 51, 51);
+    border: 2px solid black;
+    background-color: rgb(249, 250, 250);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: 5px 6px 5px gray;
+    margin-bottom: 10px;
+    background-image: linear-gradient(to bottom,rgb(133 153 151 / 88%),rgb(223 226 227));
+    /* position: sticky; */
+}
+
+.inp{
+    position: relative;
+    top:-20px;
+    /* font-style: oblique;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* display: flex; */
+    /* flex-direction: rows; */
+
+}
+#in1,#in2{
+    border-color: black;
+    margin: 30px;
+    width: 300px;
+    box-shadow:5px 4px 5px rgb(70, 69, 69);
+    height: 25px;
+}
+
+
+#add_la{
+    position: relative;
+    top: -70px;
+}
+#a{
+    border: 2px solid black;
+    box-shadow:5px 4px 5px rgb(70, 69, 69);
+}
+
+#dob{
+    
+    padding: 20px;
+    margin: 20px;
+}
+#dobin{
+    width: 250px;
+    height: 25px;
+    border: 2px solid black;
+    box-shadow:5px 4px 5px rgb(70, 69, 69);
+}
+
+
+.checkbox{
+    padding: 30px;
+}
+
+#btn{
+    height: 30px;
+    width: 100px;
+    position: relative;
+    left: 20px;
+    border-radius: 5px ;
+    box-shadow: 3px 3px 5px black;
+
+}
+
+#demo{
+    margin-top: 50px;
+}
+
+#myTable{
+    border: 1px solid black;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(148 169 172 / 51%);
+    /* color: whitesmoke; */
+    background-image: linear-gradient(to bottom,rgb(133 153 151 / 88%),rgb(223 226 227));
+   
+}
+
+.c1{
+    border:solid black;
+    background-color: aliceblue;
+    box-shadow: 3px 3px 5px black;
+    font-size: 15px;
+    color: black;
+    /* padding-top: 10px; */
+}
+
+
+
+
+#btn1{
+    height: 30px;
+    width: 200px;
+    background-color: rgba(86, 104, 104, 0.644);
+    /* color: whitesmoke; */
+    font-size: 15px;
+    box-shadow: 3px 3px 5px black;
+    margin: 20px;
+    /* width: 200px; */
+}
+
+
