@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<head>
+  <style>
+        tr,th,td {
+            border: 1px solid orange;
+            background-color:blanchedalmond;
+            }
+  </style>
+  <title>Abhishek</title>
+</head>
+
+<body>
+
+  <form name="sample">
+
+      <label for="id">ActID:</label><br>
+      <input type="text" id="id" name="id" >
+      <br>
+      
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name"><br>
+
+      <label for="add">Address:</label><br>
+      <textarea id="add" name="add"></textarea><br>
+    
+      <label for="dob">DOB:</label><br>
+      <input type="date" id="dob" name="dob">
+      <br><br>
+
+      <label>Gender:</label>
+      <input type="radio" name="gen" value="Male">Male
+      <input type="radio" name="gen" value="Female">Female
+
+      <br><br>
+            
+      <label>Account Type:</label>
+      <input type="checkbox" name="type" value="SB">
+      <label>SB</label>
+    
+      <input type="checkbox" name="type" value="CB" >
+      <label>CB</label>
+    
+      <input type="checkbox" name="type" value="FD">
+      <label>FD</label>
+      
+      <input type="checkbox" name="type" value="LOAN">
+      <label>LOAN</label> 
+      <br><br>
+
+      <button type="button" id="btn" value="Add" onclick="insert()">Submit</button>
+      <br><br><br>
+
+      <table id="tbl" class="table">
+      <thead>
+        <th>ActId</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>DOB</th>
+        <th>Gender</th>
+        <th>AccType</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </thead>
+      <tbody></tbody>
+      </table>
+    </form>
+
+      <script>
+           
+        function insert(){
+            var id=document.sample.id.value;
+            var name=document.sample.name.value;
+            var add= document.sample.add.value;
+            var dob=document.sample.dob.value;
+            var gen= document.sample.gen.value;
+
+            let checkboxes = document.querySelectorAll('input[name="type"]:checked');
+
+            let values = [];
+            checkboxes.forEach((checkbox) => {
+            values.push(checkbox.value);
+              });
+
+            var type = values;
+            var tr = document.createElement('tr');
+            var td1 = tr.appendChild(document.createElement('td'));
+            var td2 = tr.appendChild(document.createElement('td'));
+            var td3 = tr.appendChild(document.createElement('td'));
+            var td4 = tr.appendChild(document.createElement('td'));
+            var td5 = tr.appendChild(document.createElement('td'));
+            var td6 = tr.appendChild(document.createElement('td'));
+            var td7 = tr.appendChild(document.createElement('td'));
+            var td8 = tr.appendChild(document.createElement('td'));
+
+            td1.innerHTML=id;
+            td2.innerHTML=name;
+            td3.innerHTML=add;
+            td4.innerHTML=dob;
+            td5.innerHTML=gen;
+            td6.innerHTML=type;
+            td7.innerHTML='<input type="button" name="Delete" value="Delete" onclick="del(this);" class="btn btn-danger">'
+            td8.innerHTML='<input type="button" name="Update" value="Update" onclick="upd(this);" class="btn btn-primary">'
+            document.getElementById("tbl").appendChild(tr);
+        }
+
+        function del(emp) {
+          var e=emp.parentNode.parentNode;
+          e.parentNode.removeChild(e);
+        }
+
+        function upd(emp) {
+          var id=document.sample.id.value;
+          var name=document.sample.name.value;
+          var add= document.sample.add.value;
+          var dob=document.sample.dob.value;
+          var gen= document.sample.gen.value;
+
+          let checkboxes = document.querySelectorAll('input[name="type"]:checked');
+
+          let values = [];
+          checkboxes.forEach((checkbox) => {
+          values.push(checkbox.value);
+          });
+
+          var type = values;
+          var e = emp.parentNode.parentNode;
+          var tr = document.createElement('tr');
+          var td1 = tr.appendChild(document.createElement('td'));
+          var td2 = tr.appendChild(document.createElement('td'));
+          var td3 = tr.appendChild(document.createElement('td'));
+          var td4 = tr.appendChild(document.createElement('td'));
+          var td5 = tr.appendChild(document.createElement('td'));
+          var td6 = tr.appendChild(document.createElement('td'));
+          var td7 = tr.appendChild(document.createElement('td'));
+          var td8 = tr.appendChild(document.createElement('td'));
+
+          td1.innerHTML='<input type="text" name="id1">';
+          td2.innerHTML='<input type="text" name="name1">';
+          td3.innerHTML='<input type="text" name="add1">';
+          td4.innerHTML='<input type="text" name="dob1">';
+          td5.innerHTML='<input type="text" name="gen1">';
+          td6.innerHTML='<input type="text" name="type1">';
+          td7.innerHTML='<input type="button" name="Delete" value="Delete" onclick="del(this);" class="btn btn-danger">'
+          td8.innerHTML='<input type="button" name="Update" value="Update" onclick="Upddata(this);" class="btn btn-primary">'
+          document.getElementById("tbl").replaceChild(tr, e);
+        }  
+        
+        function Upddata(emp){
+          var id=document.sample.id1.value;
+          var name=document.sample.name1.value;
+          var dob = document.sample.dob1.value;
+          var address = document.sample.add1.value;
+          var gender = document.sample.gen1.value;
+          var type = document.sample.type1.value;
+
+          var e=emp.parentNode.parentNode;
+          var tr = document.createElement('tr');
+
+          var td1= tr.appendChild(document.createElement('td'));
+          var td2= tr.appendChild(document.createElement('td'));
+          var td3= tr.appendChild(document.createElement('td'));
+          var td4= tr.appendChild(document.createElement('td'));
+          var td5= tr.appendChild(document.createElement('td'));
+          var td6= tr.appendChild(document.createElement('td'));
+          var td7= tr.appendChild(document.createElement('td'));
+          var td8= tr.appendChild(document.createElement('td'));
+
+          td1.innerHTM=id;
+          td2.innerHTML=name;
+          td3.innerHTML=add;
+          td4.innerHTML=dob;
+          td5.innerHTML=gen;
+          td6.innerHTML=type;
+          td7.innerHTML='<input type="button" name="Delete" value="Delete" onclick="del(this);" class="btn btn-danger">'
+          td8.innerHTML='<input type="button" name="Update" value="Update" onclick="Upd(this);" class="btn btn-primary">'
+          document.getElementById("tbl").replaceChild(tr, e);
+        }
+    </script>
+  </body>
+</html>
