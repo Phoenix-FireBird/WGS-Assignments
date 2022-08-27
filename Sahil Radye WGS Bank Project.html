@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bank Account Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <h1> Customer Details </h1>
+        <form id="addcustomerform">
+            <div class="form-group">
+                <label>ActId:</label>
+                <input type="text" name="ID" id="ID" class="form-control" value=""
+                    placeholder="Keep This Blank">
+            </div>
+            <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" name="Name" id="Name">
+            </div>
+            <div class="form-group">
+                <label>Address:</label>
+                <textarea type="text" name="Address" id="Address" class="form-control" value=""
+                    required=""></textarea>
+            </div>
+            <div class="form-group">
+                <label>DOB:</label>
+                <input type="date" name="dob" id="dob" class="form-control" value="" required="">
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <input type="text" name="gen" id="gen" class="form-control" value="" required="">
+            </div><br>
+            <div>
+                <label><b>TYPE</b></label>
+                <select id="type">
+                    <option value="SB">SB</option>
+                    <option value="Loan">Loan</option>
+                    <option value="FB">FB</option>
+                    <option value="CD">CD</option>
+
+                </select>
+            </div><br>
+
+            <button type="submit" id="btnaddEmployee" class="btn btn-primary save-btn">Add Details</button>
+
+        </form>
+        <br />
+        <fieldset>
+            <legend>Customer List
+            </legend>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ActId</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>DOB</th>
+                        <th>Gender</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody id="tblbody">
+
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+</body>
+<script type="text/javascript">
+    function CreateUniqueEmployeeID() {
+        const ID = Date.now();
+        return ID;
+    }
+    document.getElementById("btnaddEmployee").addEventListener("click", function (event) {
+        event.preventDefault()
+        var ActId = CreateUniqueEmployeeID();
+        var Name = document.getElementById("Name").value;
+        var Address = document.getElementById("Address").value;
+        var DOB = document.getElementById("dob").value;
+        var Gender = document.getElementById("gen").value;
+        var Type = document.getElementById("type").value;
+        var btneditId = "btnedit" + ActId;
+        var btndeleteId = "btndelete" + ActId;
+        var tablerow = "<tr Id='" + ActId + "'   data-ActId='" + ActId + "'   data-Name='" + Name + "' data-Address='" + Address + "'   data-DOB='" + DOB + "' data-Gender='" + Gender + "' data-Type='" + Type + "'>"
+
+            + "<td class='td-data'>" + ActId + "</td>"
+            + "<td class='td-data'>" + Name + "</td>"
+            + "<td class='td-data'>" + Address + "</td>"
+            + "<td class='td-data'>" + DOB + "</td>"
+            + "<td class='td-data'>" + Gender + "</td>"
+            + "<td class='td-data'>" + Type + "</td>"
+            + "<td class='td-data'>" +
+            "<button id='" + btneditId + "' class='btn btn-info btn-xs btn-editcustomer' onclick='showeditrow(" + ActId + ")'><i class='fa fa-pencil' aria-hidden='true'></i>Edit</button>" +
+            "<button id='" + btndeleteId + "' class='btn btn-danger btn-xs btn-deleteEmployee' onclick='deleteEmployeeRow(" + ActId + ")'><i class='fa fa-trash' aria-hidden='true'>Delete</button>"
+            + "</td>"
+            + "</tr>";
+        debugger;
+        document.getElementById('tblbody').innerHTML += tablerow;
+        document.getElementById('Name').value = "";
+        document.getElementById('Address').value = "";
+        document.getElementById('dob').value = "";
+        document.getElementById('gen').value = "";
+        document.getElementById('type').value = "";
+    });
+
+    function showeditrow(ActId) {
+        debugger;
+        var EmployeeRow = document.getElementById(ActId); //this gives tr of  whose button was clicked
+
+        var data = EmployeeRow.querySelectorAll(".td-data");
+
+        /*returns array of all elements with
+        "row-data" class within the row with given id*/
+
+        var ActId = data[0].innerHTML;
+        var Name = data[1].innerHTML;
+        var Address = data[2].innerHTML;
+        var DOB = data[3].innerHTML;
+        var Gender = data[4].innerHTML;
+        var Type = data[5].innerHTML;
+        var btneditId = "btnedit" + ActId;
+        data[0].innerHTML = '<input name="txtupdate_EmployeeID"  disabled id="txtupdate_EmployeeID" value="' + ActId + '"/>';
+        data[1].innerHTML = '<input name="txtupdate_EmployeeName" id="txtupdate_EmployeeName" value="' + Name + '"/>';
+        data[2].innerHTML = '<input name="txtupdate_Address" id="txtupdate_Address" value="' + Address + '"/>';
+        data[3].innerHTML = '<input name="txtupdate_PostalCode" id="txtupdate_PostalCode" value="' + DOB + '"/>';
+        data[4].innerHTML = '<input name="txtupdate_PostalCode" id="txtupdate_PostalCode" value="' + Gender + '"/>';
+        data[5].innerHTML = '<input name="txtupdate_PostalCode" id="txtupdate_PostalCode" value="' + Type + '"/>';
+
+        data[6].innerHTML =
+            "<button class='btn btn-primary btn-xs btn-updateEmployee' onclick='updateemployees(" + ActId + ")'>" +
+            "<i class='fa fa-pencil' aria-hidden='true'></i>Update</button>"
+            + "<button class='btn btn-warning btn-xs btn-cancelupdate' onclick='cancelupdate(" + ActId + ")'><i class='fa fa-times' aria-hidden='true'></i>Cancel</button>"
+            + "<button class='btn btn-danger btn-xs btn-deleteEmployee' onclick='deleteEmployeeRow(" + ActId + ")'>"
+            + "<i class='fa fa-trash' aria-hidden='true'></i>Delete</button>"
+    }
+    function cancelupdate(ActId) {
+        debugger;
+        var btneditId = "btnedit" + ActId;
+        var btndeleteId = "btndelete" + ActId;
+
+        var EmployeeRow = document.getElementById(ActId); //this gives tr of  whose button was clicked
+        var data = EmployeeRow.querySelectorAll(".td-data");
+
+        var EmployeeName = EmployeeRow.getAttribute("data-EmployeeName");
+        var Address = EmployeeRow.getAttribute("data-Address");
+        var PostalCode = EmployeeRow.getAttribute("data-PostalCode");
+
+
+        data[0].innerHTML = ActID;
+        data[1].innerHTML = Name;
+        data[2].innerHTML = Address;
+        data[3].innerHTML = DOB;
+        data[4].innerHTML = Gender;
+        data[5].innerHTML = Type;
+
+        var actionbtn = "<button id='" + btneditId + "' class='btn btn-info btn-xs btn-editcustomer' onclick='showeditrow(" + ActId + ")'><i class='fa fa-pencil' aria-hidden='true'></i>Edit</button>" +
+            "<button id='" + btndeleteId + "' class='btn btn-danger btn-xs btn-deleteEmployee' onclick='deleteEmployeeRow(" + ActId + ")'><i class='fa fa-trash' aria-hidden='true'>Delete</button>"
+        data[4].innerHTML = actionbtn;
+    }
+    function deleteEmployeeRow(ActId) {
+        document.getElementById(ActId).remove();
+    }
+    function updateemployees(ActId) {
+        var btneditId = "btnedit" + ActId;
+        var btndeleteId = "btndelete" + ActId;
+
+        var EmployeeRow = document.getElementById(ActId); //this gives tr of  whose button was clicked
+        var data = EmployeeRow.querySelectorAll(".td-data");
+
+        var Name = data[1].querySelector("#txtupdate_EmployeeName").value;
+        var Address = data[2].querySelector("#txtupdate_Address").value;
+        var DOB = data[3].querySelector("#txtupdate_PostalCode").value;
+        var Gender = data[4].querySelector("#txtupdate_PostalCode").value;
+        var Type = data[5].querySelector("#txtupdate_PostalCode").value;
+
+
+        data[0].innerHTML = ActId;
+        data[1].innerHTML = Name;
+        data[2].innerHTML = Address;
+        data[3].innerHTML = DOB;
+        data[4].innerHTML = Gender;
+        data[5].innerHTML = Type;
+
+        var actionbtn = "<button id='" + btneditId + "' class='btn btn-info btn-xs btn-editcustomer' onclick='showeditrow(" + ActId + ")'><i class='fa fa-pencil' aria-hidden='true'></i>Edit</button>" +
+            "<button id='" + btndeleteId + "' class='btn btn-danger btn-xs btn-deleteEmployee' onclick='deleteEmployeeRow(" + ActId + ")'><i class='fa fa-trash' aria-hidden='true'>Delete</button>"
+        data[6].innerHTML = actionbtn;
+    }
+</script>
+
+</html>
