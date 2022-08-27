@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table{
+            font-family: arial,sans-serif;
+            width:100%;
+            }
+
+        td,th{
+        border:1px solid #dddddd;
+        text-align:left;
+        padding:8px;
+        }           
+
+Body {  
+    font-family: Calibri, Helvetica, sans-serif;  
+    background-color: rgb(243, 189, 239);  
+  }  
+  button {   
+         background-color: #bfffc1;   
+         width: 100%;  
+          color: rgb(255, 0, 0);   
+          padding: 15px;   
+          margin: 10px 0px;   
+          border: none;   
+          cursor: pointer;   
+           }   
+   form {   
+          border: 3px solid #f1f1f1;   
+      }   
+   input[type=text] {   
+          width: 100%;   
+          margin: 8px 0;  
+          padding: 12px 20px;   
+          display: inline-block;   
+          border: 2px solid green;   
+          box-sizing: border-box;   
+      }  
+   button:hover {   
+          opacity: 0.7;   
+      }   
+    .deletebtn {   
+          width: auto;   
+          padding: 10px 18px;  
+          margin: 10px 5px;  
+      }   
+          
+       
+   .container {   
+          padding: 25px;   
+          background-color: lightblue;  
+      }   
+
+
+        </style>
+        <script>
+            var object=[];
+            function check(){
+               var ele1=document.getElementById("check1");
+               var ele2=document.getElementById("check2");
+               if(ele1.checked==true){
+                   return ele1.value;
+               }
+               else{
+                   return ele2.value;
+               }
+           }
+            function rad(){
+               var ele1=document.getElementById("rad1");
+               var ele2=document.getElementById("rad2");
+               if(ele1.checked==true){
+                   return ele1.value;
+               }
+               else{
+                   return ele2.value;
+               }
+           }
+
+           function loop(){
+               var element=document.getElementById("txt1");
+               var element2=document.getElementById("txt2");
+               var element3=document.getElementById("txt3");
+               var element4=document.getElementById("txt4");
+               var element5=rad();
+               var element6=check();
+               var temp={iD:element.value,variable2:element2.value,variable3:element3.value,variable4:element4.value,variable5:element5,variable6:element6};
+               object.push(temp);
+               console.log(object);
+               console.log(object.length);
+           }
+
+           function retdata(){
+               for(let i=0;i<object.length;i++){
+               var tab=document.getElementById("datatable");
+               console.log(tab);
+               tab.innerHTML+="<tr>"+"<td>"+object[i].iD+"</td>"+"<td>"+object[i].variable2+"</td>"+"<td>"+object[i].variable3+"</td>"+"<td>"+object[i].variable4+"</td>"+"<td>"+object[i].variable5+"</td>"+"<td>"+object[i].variable6+"</td>"+"</tr>";
+               }
+            }
+
+           function del(){ 
+               var tab=document.getElementById("datatable");
+               tab.deleteRow(0);
+               object.pop();
+               console.log(object);
+           }   
+        </script>
+    </head>
+    <body>
+        <div>
+            <label>ActID:</label>
+            <input id="txt1" type="text" value=""/>
+            <br>
+            <label>ActName:</label>
+            <input id="txt2" type="text" value=""/>
+            <br>
+            <label>Address:</label>
+            <input id="txt3" rows="4" cols="20" type="text" value=""> 
+            <br>
+            <label>DOB</label>
+            <input id="txt4" type="date" value=""/>
+            <br>
+            <label>Gender </label>
+            <input id="rad1" type="radio" name="gender" value="Male">Male</input>
+            <input id="rad2" type="radio" name="gender" value="Female">Female</input>
+            <br>
+            <label>AcctType:</label>
+            <input id="check1" type="checkbox" name="checkbox" value="SB">SB</input>
+            <input id="check2" type="checkbox" name="checkbox" value="FD">FD</input>
+            <br>
+            <button onclick="retdata()" type="submit">Submit</button>
+            <button onclick="loop()" type="update">update</button>
+            <button onclick="del()" type="delete" class="deletebtn">Delete</button>
+        </div>
+        <div >
+            <table>
+                <tr>
+                    <th>ActID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Type</th>
+                </tr>
+            </table>
+        </div>
+        <table id="clear">
+            <table id="datatable"></table>
+        </table>
+    </body>
+</html>
