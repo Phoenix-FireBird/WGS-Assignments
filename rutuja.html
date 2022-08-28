@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Dynamic Table</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+     <div class="container">
+
+<h1>Student Data</h1>
+
+
+<form method="POST" name="sample">
+
+<br>
+
+    Act Id. <input type="number" name="rollno"> 
+    
+    Act Name: <input type="text" name="name">
+
+    Address :  <input type="text" name="address">
+
+    DOB : <input type="text" name="dob">
+
+    <br>
+    Gender : <input type="radio" id="male" name="gender" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label><br>
+    <br> 
+    Acc Type :
+    <input type="checkbox" id="acctype1" name="acctype" value="SB">
+    <label for="acctype1"> SB </label>
+    <input type="checkbox" id="acctype2" name="acctype" value="FD">
+    <label for="acctype2"> FD </label><br>
+    <input type="checkbox" id="acctype3" name="acctype" value="CB">
+    <label for="acctype3"> CB </label>
+    <input type="checkbox" id="acctype4" name="acctype" value="Loan">
+    <label for="acctype4"> Loan </label><br>
+
+
+    <br><br>
+
+    <input type="button" name="add" value="Add Data" onclick="addStudent();" class="btn btn-success"><hr>
+
+
+            <table id="tbl" class="table" border="1">
+
+                <thead>
+
+                <th>Act Id</th>
+
+                <th>Act Name</th>
+
+                <th>Address</th>
+
+                <th>DOB</th>
+
+                <th>Gender</th>
+
+                <th>Acc. Type</th>
+
+                <th> Delete</th>
+
+                <th>Update</th>
+
+               
+
+                </thead>
+
+               
+
+                 <tbody>
+
+                     
+
+                 </tbody>
+
+             </table>
+
+
+</form>
+
+
+ <script type="text/javascript">
+
+       
+
+    function addStudent()
+
+    {
+
+        var rollno=document.sample.rollno.value;
+
+        var name=document.sample.name.value;
+
+        var address = document.sample.address.value;
+
+        var dob = document.sample.dob.value;
+
+        var gender = document.sample.gender.value;
+
+        let checkboxes = document.querySelectorAll('input[name="acctype"]:checked');
+
+        let values = [];
+checkboxes.forEach((checkbox) => {
+    values.push(checkbox.value);
+});
+
+var acctype = values;
+        
+
+        var tr = document.createElement('tr');
+
+       
+
+        var td1 = tr.appendChild(document.createElement('td'));
+
+        var td2 = tr.appendChild(document.createElement('td'));
+
+        var td3 = tr.appendChild(document.createElement('td'));
+
+        var td4 = tr.appendChild(document.createElement('td'));
+
+        var td5 = tr.appendChild(document.createElement('td'));
+
+        var td6 = tr.appendChild(document.createElement('td'));
+
+        var td7 = tr.appendChild(document.createElement('td'));
+
+        var td8 = tr.appendChild(document.createElement('td'));
+
+   
+
+       
+
+        td1.innerHTML=rollno;
+
+        td2.innerHTML=name;
+
+        td3.innerHTML=address;
+
+        td4.innerHTML=dob;
+
+        td5.innerHTML=gender;
+
+        td6.innerHTML=acctype;
+
+
+        td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
+
+        td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
+
+
+        document.getElementById("tbl").appendChild(tr);
+
+    }
+
+
+    function UpStud(stud){
+
+        var rollno=document.sample.rollno.value;
+
+        var name=document.sample.name.value;
+
+        var address = document.sample.address.value;
+
+        var dob = document.sample.dob.value;
+
+        var gender = document.sample.gender.value;
+
+        let checkboxes = document.querySelectorAll('input[name="acctype"]:checked');
+
+        let values = [];
+checkboxes.forEach((checkbox) => {
+    values.push(checkbox.value);
+});
+
+var acctype = values;
+
+        var s = stud.parentNode.parentNode;
+
+        var tr = document.createElement('tr');
+
+       
+
+        var td1 = tr.appendChild(document.createElement('td'));
+
+        var td2 = tr.appendChild(document.createElement('td'));
+
+        var td3 = tr.appendChild(document.createElement('td'));
+
+        var td4 = tr.appendChild(document.createElement('td'));
+
+        var td5 = tr.appendChild(document.createElement('td'));
+
+        var td6 = tr.appendChild(document.createElement('td'));
+
+        var td7 = tr.appendChild(document.createElement('td'));
+
+        var td8 = tr.appendChild(document.createElement('td'));
+
+       
+
+       
+
+        td1.innerHTML='<input type="text" name="rollno1">';
+
+        td2.innerHTML='<input type="text" name="name1">';
+
+        td3.innerHTML='<input type="text" name="dob1">';
+
+        td4.innerHTML='<input type="text" name="address1">';
+
+        td5.innerHTML='<input type="text" name="gender1">';
+
+        td6.innerHTML='<input type="text" name="acctype">';
+
+
+
+
+
+        td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
+
+        td8.innerHTML='<input type="button" name="up" value="Update" onclick="addUpStud(this);" class="btn btn-primary">'
+
+
+        document.getElementById("tbl").replaceChild(tr, s);
+
+    }
+
+
+    function addUpStud(stud){
+
+        var rollno=document.sample.rollno1.value;
+
+        var name=document.sample.name1.value;
+
+        var dob = document.sample.dob1.value;
+
+        var address = document.sample.address1.value;
+
+        var gender = document.sample.gender1.value;
+        
+
+        var acctype = document.sample.acctype.value;
+
+        var s = stud.parentNode.parentNode;
+
+        var tr = document.createElement('tr');
+
+       
+
+        var td1 = tr.appendChild(document.createElement('td'));
+
+        var td2 = tr.appendChild(document.createElement('td'));
+
+        var td3 = tr.appendChild(document.createElement('td'));
+
+        var td4 = tr.appendChild(document.createElement('td'));
+
+        var td5 = tr.appendChild(document.createElement('td'));
+
+        var td6 = tr.appendChild(document.createElement('td'));
+
+        var td7 = tr.appendChild(document.createElement('td'));
+
+        var td8 = tr.appendChild(document.createElement('td'));
+
+       
+
+       
+
+        td1.innerHTML=rollno;
+
+        td2.innerHTML=name;
+
+        td3.innerHTML =dob;
+
+        td4.innerHTML = address;
+
+        td5.innerHTML=gender;
+
+        td6.innerHTML=acctype;
+
+        td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
+
+        td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
+
+
+        document.getElementById("tbl").replaceChild(tr, s);
+
+    }
+
+
+    function delStudent(Stud){
+
+        var s=Stud.parentNode.parentNode;
+
+        s.parentNode.removeChild(s);
+
+    }
+
+   
+
+   
+
+    </script>
+
+</div>
+
+    </body>
+
+</html>
+
+
