@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>  
+        body{  
+          font-family: Calibri, Helvetica, sans-serif;  
+          background-color: pink;  
+        }  
+        .container {  
+            padding: 50px;  
+          background-color: lightblue;  
+        }  
+          
+        input[type=text], input[type=password],input[type=number],input[type=date] textarea {  
+          width: 50%;  
+          padding: 15px;  
+          margin: 5px 0 22px 0;  
+          display: inline-block;  
+          border: none;  
+          background: #f1f1f1;  
+        }  
+        input[type=text]:focus, input[type=password]:focus {  
+          background-color: orange;  
+          outline: none;  
+        }  
+         div {  
+                    padding: 10px 0;  
+                 }  
+        hr {  
+          border: 1px solid #f1f1f1;  
+          margin-bottom: 25px;  
+        }  
+        .registerbtn {  
+          background-color: #848884;  
+          color: white;  
+          padding: 16px 20px;  
+          margin: 8px 0;  
+          border: none;  
+          cursor: pointer;  
+          width: 100%;  
+          opacity: 0.9;  
+          border-radius: 10px;
+          border-color: black;
+        }  
+        .registerbtn:hover {  
+          opacity: 1;  
+        }
+        .display_table 
+        {
+          padding:15px;
+          width:52%;
+        }
+        .display_table table
+        {
+          border:solid 1px rgb(30, 24, 24);
+        }
+        .display_table td, .display_table th
+        {
+          border-left:solid 1px rgb(26, 20, 20);
+          border-bottom:solid 1px rgb(37, 32, 32);
+          padding:10px 5px;
+          text-align:left;
+          font-size:13px;
+        }
+        .display_table td:first-child, 
+        .display_table th:first-child
+        {
+          border-left:none;
+          color: white;
+        }
+
+        .display_table tr
+        {
+         border-bottom:solid 1px rgb(14, 12, 12);
+         color: white;
+        }
+        .display_table tr:last-child td
+        {
+          border-bottom:none;
+          color: white;
+        }
+    
+     </style>  
+</head>
+<body>
+    <form >  
+        <div class="container">  
+        <center>  <h1> Bank Account Detail Form</h1> </center>  
+        <hr>  
+        <label> ActId : </label>   
+      <input type="number" class="id" id="id" name="id" placeholder= "Enter your ActID" size="15" required />   
+       
+      <label> DOB: </label>    
+      <input type="date" class="date" id="date" name="date" placeholder="date of birth" size="15"required /> <br><br> 
+      <label> Actname: </label>
+      <input type="text" class="name" id="name" name="actname" placeholder="Enter your actname" size="15" required /><br>   
+      
+       <label>Address :</label>  
+      <textarea cols="80" rows="5" class="address" id="address"placeholder="Current Address" value="address" required>  
+      </textarea>      
+      <div>  
+      <label>   
+      Gender :  
+      </label><br>  
+      <input type="radio" value="Male" name="gender" class="gender" id="gender">Male   
+      <input type="radio" value="Female" name="gender" class="gender" id="gender">Female   
+      <input type="radio" value="Other" name="gender" class="gender" id="gender">Other  
+      </div> 
+      Account Type: <br>    
+         <input type="checkbox" class="at" id="at" name="sb" value="SB"/>    
+                 <label>SB</label> <br>    
+         <input type="checkbox" class="at" id="at" name="fd" value="FD"/>    
+                 <label>FD</label> <br>    
+         <input type="checkbox" class="at" id="at" name="cb" value="CB"/>    
+                 <label>CB</label> <br>  
+         <input type="checkbox" class="at" id="at" name="loan" value="LOAN"/>    
+                 <label>LOAN</label> <br><br>  
+      
+      <button type="submit" class="button" id="submit" value="submit">Submit</button>  
+      <button type="submit" class="dlt" onclick="onDelete(this)" id="delete" value="delete">Delete</button> 
+       
+         
+    </form> 
+
+
+    <div class="display_table">
+        <table class="list" id="table">
+              <thead>
+             <tr>
+                
+                <th>ActID</th>         
+                
+                <th>DOB</th>
+                <th>ActName</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Account_type</th>                       
+                
+            </tr>
+              </thead>
+              <tbody>
+  
+              </tbody>
+          </table>
+  </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+            
+    document.getElementById("submit").onclick=function()
+    {
+        document.getElementById("table").style.display="block";
+        
+        var table = document.getElementById("table");
+            var row = table.insertRow(-1);
+            var ActID = row.insertCell(0);
+            var DOB = row.insertCell(1);
+            var Actname = row.insertCell(2);
+            var Address = row.insertCell(3);
+            var Gender = row.insertCell(4);
+            var Account_type = row.insertCell(5);
+            ActID.innerHTML = document.getElementById("id").value;
+            DOB.innerHTML = document.getElementById("date").value;
+            Actname.innerHTML = document.getElementById("name").value;
+            Address.innerHTML = document.getElementById("address").value;
+            Gender.innerHTML = document.getElementById("gender").value;
+            Account_type.innerHTML = document.getElementById("at").value;
+            
+            return false;
+
+        
+       
+       
+
+
+       function onDelete() 
+       {
+        if (confirm('Are you sure to delete this record ?')) 
+        {
+        var selectdelete = document.querySelector(".dlt");
+        selectdelete = selectdelete.parentElement.parentElement.remove(0);
+        }
+       }        
+    }
+
+</script>
+    
+</body>
+</html>
