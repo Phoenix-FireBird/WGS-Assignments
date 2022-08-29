@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment_HTML</title>
+  <style>
+     
+     #t2{
+        padding-right: 20px;
+        padding-left: 350px;
+      }
+      body{
+        background-color: aquamarine;
+      }
+      tr,th,td {
+            border: 1px solid purple;
+            background-color: skyblue;
+            }
+        
+        p{
+            color: red;
+            font-size: medium;
+        }
+        .col {
+            background-color :aqua;
+            color:black;
+        }
+#row{
+    background-color: aqua;
+ 
+}
+  
+  #t2{
+    background-color: aquamarine;
+  }
+  input[type="button"]{
+    background: white;
+    padding: 6px 12px;
+    margin: 15px 0px 10px;
+    display: inline-block;
+    border: black;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+  
+  }
+
+  input[type='button']:hover{
+    background:#4B99d8;
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container" id="row">
+    <div>
+    
+
+      <label for="id"><b>ACTid:</b></label><br>
+      <input class="d1" type="text" id="actid" name="actid" placeholder="Enter ID" ><br>
+      
+      <label for="name"><b>ACTName:</b></label><br>
+      <input class="d1" type="text" id="actname" name="actname" placeholder="Name" ><br>
+
+      <label for="add"><b>Address:</b></label><br>
+      <input class="d1" type="text" id="address" name="address" placeholder="Address"><br>
+
+      <label for="dob"><b>DOB:</b></label><br>
+      <input class="d1" type="datetime" id="dob" name="dob" placeholder="DOB" ><br>
+      <br><br>
+    </div>
+<div id="rt">
+    <label> Gender</label>
+            <div >
+                <select id="gen" >
+                    <option value="Choose.....">Choose...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    
+                </select>
+            </div>
+    <br><br>
+
+<label> Type</label>
+    <div>
+    <input type="checkbox" id="sb" name="type" value="SB" checked>
+    <label for="sb">SB</label>
+    </div>
+    <div>
+    <input type="checkbox" id="loan" name="type" value="Loan" >
+    <label for="loan">Loan</label>
+    </div>
+    <div>
+    <input type="checkbox" id="cd" name="type" value="CD">
+    <label for="cd">CD</label>
+    </div>
+    <div>
+    <input type="checkbox" id="fd" name="type" value="FD">
+    <label for="fd">FD</label>
+    </div>
+    <div>
+    
+    </div>
+    
+</div>
+    <button type="button" name="button" id="btn" value="Add" onclick="ret()">SUBMIT</button>
+
+
+  </div>
+  <br><br>
+  <table id="t2">
+    <thead>
+      <th>ACTid</th>
+      <th>ACTName</th>
+      <th>Address</th>
+      <th>DOB</th>
+      <th>Gender</th>
+      <th>Type</th>
+    </thead>
+    <tbody id="tb1"></tbody>
+
+  </table>
+
+  <script>
+    function ret(){
+      var id = document.getElementById("actid").value;
+      var name = document.getElementById("actname").value;
+      var address = document.getElementById("address").value;
+      var dob = document.getElementById("dob").value;
+      var gender = document.getElementById('gen').value;
+      
+
+      var temp =''
+
+      var checkboxes = document.getElementsByName('type');
+    for (var checkbox of checkboxes)
+    {
+        if (checkbox.checked) {
+            temp = checkbox.value + ' ' + temp;
+        }
+    }
+
+
+
+      var table = `<tr>
+                      <td>${id}</td>
+                      <td>${name}</td>
+                      <td>${address}</td>
+                      <td>${dob}</td>
+                      <td>${gender}</td>
+                      <td>${temp}</td>
+                    </tr>`;
+
+      document.getElementById("tb1").innerHTML += table;
+      console.log(name);
+      console.log(address)
+      console.log(dob);
+      console.log(gender);
+      console.log(id);
+      console.log(temp)
+    }
+  </script>
+
+</body>
+
+</html>
