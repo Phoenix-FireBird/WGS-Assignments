@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <form autocomplete="off" onsubmit="onFormSubmit();">
+                        <div>
+                            <label for="accountId">ActId</label>
+                            <input type="text" name="accountId" id="accountId">
+                        </div>
+                        <div>
+                            <label for="accountName">AccName</label>
+                            <input type="text" name="accountName" id="accountName">
+                        </div>
+                        <div>
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address">
+                        </div>
+                        <div>
+                            <label for="dob">DOB</label>
+                            <input type="date" name="dob" id="dob">
+                        </div>
+                        <div>
+                            <label for="gender">Gender</label>
+                            <input type="radio" name="gender" id="male" value="Male">Male
+                            <input type="radio" name="gender" id="female" value="Female">Female
+                        </div>
+                        <div>
+                            <label for="accountType">Account Type</label>
+                            <input type="checkbox" name="accountType" id="accountType" value="SB">SB
+                            <input type="checkbox" name="accountType" id="accountType" value="FD">FD
+                            <input type="checkbox" name="accountType" id="accountType" value="CB">CB
+                            <input type="checkbox" name="accountType" id="accountType" value="Loan">Loan
+
+                        </div>
+                        <div class="form-action-button">
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Reset">
+                        </div>
+
+                    </form>
+
+                    <td>
+                        <table class="list" id="accountInfo">
+                            <thead>
+                                <tr>
+                                    <th>ActId</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>DOB</th>
+                                    <th>Gender</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                    </td>
+                </td>
+            </tr>
+        </table>
+        <script>
+		var selectedRow=null;
+function onFormSubmit(){
+    event.preventDefault();
+    var formData=readFormData();
+    if(selectedRow==null){
+        insertNewRecord(formData);
+
+    }
+    else{
+        updateRecord(formData);
+    }
+    resetForm();
+}
+
+function readFormData(){
+    var formData={};
+    formData["accountId"]=document.getElementById("accountId").value;
+    formData["accountName"]=document.getElementById("accountName").value;
+    formData["address"]=document.getElementById("address").value;
+    formData["dob"]=document.getElementById("dob").value;
+    // formData["gender"]=document.getElementById("gender").value;
+    if(document.getElementById('male').checked){
+        formData["gender"]=document.getElementById("male").value;
+    }
+    else if(document.getElementById('female').checked){
+        formData["gender"]=document.getElementById('female').value;
+    }
+    formData["accountType"]=document.getElementById("accountType").value;
+    return formData;
+}
+
+function insertNewRecord(data){
+    var table=document.getElementById("accountInfo").getElementsByTagName('tbody')[0];
+    var newRow=table.insertRow(table.length);
+    var cell1=newRow.insertCell(0);
+    cell1.innerHTML=data.accountId;
+    var cell2=newRow.insertCell(1);
+    cell2.innerHTML=data.accountName;
+    var cell3=newRow.insertCell(2);
+    cell3.innerHTML=data.address;
+    var cell4=newRow.insertCell(3);
+    cell4.innerHTML=data.dob;
+    var cell5=newRow.insertCell(4);
+    cell5.innerHTML=data.gender;
+    var cell6=newRow.insertCell(5);
+    cell6.innerHTML=data.accountType;
+    var cell7=newRow.insertCell(6);
+    cell7.innerHTML=`<button onClick='onEdit(this)'>Edit</button> <button onClick='onDelete(this)'>Delete</button>`
+
+}
+
+
+function onEdit(td){
+    selectedRow=td.parentElement.parentElement;
+    document.getElementById('accountId').value=selectedRow.cells[0].innerHTML;
+    document.getElementById('accountName').value=selectedRow.cells[1].innerHTML;
+    document.getElementById('address').value=selectedRow.cells[2].innerHTML;
+    document.getElementById('dob').value=selectedRow.cells[3].innerHTML;
+    document.getElementById('gender').value=selectedRow.cells[4].innerHTML;
+    document.getElementById('accountType').value=selectedRow.cells[5].innerHTML;
+}
+
+function updateRecord(formData){
+    selectedRow.cells[0].innerHTML=formData.accountId;
+    selectedRow.cells[1].innerHTML=formData.accountName;
+    selectedRow.cells[2].innerHTML=formData.address;
+    selectedRow.cells[3].innerHTML=formData.dob;
+    selectedRow.cells[4].innerHTML=formData.gender;
+    selectedRow.cells[5].innerHTML=formData.accountType;
+    
+}
+
+
+function onDelete(td){
+    if(confirm("Do you want to delete this record?")){
+        row=td.parentElement.parentElement;
+        document.getElementById('accountInfo').deleteRow(row.rowIndex);
+
+    }
+    resetForm();
+}
+
+function resetForm(){
+    document.getElementById('accountId').value='';
+    document.getElementById('accountName').value='';
+    document.getElementById('address').value='';
+    document.getElementById('dob').value='';
+    document.getElementById('gender').value='';
+    document.getElementById('accountType').value='';
+    selectedRow=null;
+}
+	</script>
+    </body>
+</html>
