@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+.col {
+    background-color: rgb(10, 75, 75);
+    color: aliceblue;
+}
+
+table{
+    border: 1px solid black;
+    background-color: rgb(192, 148, 128);
+}
+
+.col1 {
+    background-color: whitesmoke;
+}
+
+.t1{
+    border: 2px solid black;
+    margin: 10px 10px;
+    padding: 10px 10px;
+    margin: 2px;
+    padding: 2px;
+    height: 10cm;
+    width: 100%;
+}
+
+.a1 {
+    margin-left: 30%;
+}
+</style>
+        <script>
+            var object=[];
+            function check(){
+               var ele1=document.getElementById("SB");
+               var ele2=document.getElementById("FD");
+               if(ele1.checked==true){
+                   return ele1.value;
+               }
+               else{
+                   return ele2.value;
+               }
+           }
+            function rad(){
+               var ele1=document.getElementById("Male");
+               var ele2=document.getElementById("Female");
+               if(ele1.checked==true){
+                   return ele1.value;
+               }
+               else{
+                   return ele2.value;
+               }
+           }
+
+           function loop(){
+               var ele1=document.getElementById("id");
+               var ele2=document.getElementById("fname");
+               var ele3=document.getElementById("loc");
+               var ele4=document.getElementById("country");
+               var ele5=rad();
+               var ele6=check();
+               var temp={iD:ele1.value,
+                variable2:ele2.value,
+                variable3:ele3.value,
+                variable4:ele4.value,
+                variable5:ele5,
+                variable6:ele6};
+               object.push(temp);
+           }
+
+           function retdata(){
+               for(let i=0;i<object.length;i++){
+               var tab=document.getElementById("datatable");
+               console.log(tab);
+               tab.innerHTML+="<tr>"+"<td>"+object[i].iD+"</td>"+"<td>"+object[i].variable2+"</td>"+"<td>"+object[i].variable3+"</td>"+"<td>"+object[i].variable4+"</td>"+"<td>"+object[i].variable5+"</td>"+"<td>"+object[i].variable6+"</td>"+"</tr>";
+               }
+            }  
+        </script>
+    </head>
+    <body>
+         <div>
+        <label for="id"><b>ID:</b></label>
+        <input type="text" id="id" name="id">
+        <label for="fname"><b>Name:</b></label>
+        <input type="text" id="fname" name="fname">
+        <label for="loc"><b>Location:</b></label>
+        <input type="text" id="loc" name="location">
+        <label for="country"><b>Country:</b></label>
+        <input type="text" id="country" name="country">
+        <br>
+        <br>
+        <label for="Gender"><b>Gender</b></label>
+        <label for="Male"><b>Male</b></label>
+        <input type="radio" id="Male" name="gender" value="male">
+        <label for="Female"><b>Female</b></label>
+        <input type="radio" id="Female" name="gender" value="female">
+        <br><br>
+        <label for="AccType"><b>AccType</b></label>
+        <label for="SB"><b>SB</b></label>
+        <input type="checkbox" id="SB" name="checkbox" value="SB">
+        <label for="FD"><b>FD</b></label>
+        <input type="checkbox" id="FD" name="checkbox" value="FD">
+        <button type="submit" id="subbtn" onclick="retdata()">SHOW</button>
+        <button type="update" id="update" onclick="loop()">update</button>
+      </div>
+        <div >
+            <table>
+                <tr>
+                    <th>ActID</th>
+                    <th>Name</th>
+                    <th>location</th>
+                    <th>country</th>
+                    <th>gender</th>
+                    <th>Account type</th>
+                </tr>
+            </table>
+        </div>
+            <table id="datatable"></table>
+    </body>
+</html>
