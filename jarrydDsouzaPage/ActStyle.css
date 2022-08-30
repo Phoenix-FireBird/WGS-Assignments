@@ -1,0 +1,125 @@
+
+*{
+    font-style: oblique;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*box-shadow:5px 4px 5px rgb(175, 171, 171);
+    */border-radius:5px ;
+    
+}
+Body {  
+    font-family: Calibri, Helvetica, sans-serif;  
+    background-color: rgb(141, 111, 250);  
+}
+form {   
+    border: 3px solid #f1f1f1;   
+}  
+input[type=text] {   
+    width: 100%;   
+    margin: 8px 0;  
+    padding: 12px 20px;   
+    display: inline-block;   
+    border: 2px solid rgb(0, 255, 0);   
+    box-sizing: border-box;   
+}  
+button:hover {   
+    opacity: 0.7;   
+}   
+.deletebtn {   
+    width: auto;   
+    padding: 10px 18px;  
+    margin: 10px 5px;  
+}   
+.container {   
+    padding: 25px;   
+    background-color: lightblue;  
+}
+table{
+    font-family: arial,sans-serif;
+    width:100%;
+}
+td,th{
+    border:1px solid #dddddd;
+    text-align:left;
+    padding:8px;
+}
+.outerpart{
+    background-color: rgb(171, 207, 207);
+    padding: 5px;
+    height: 500px;
+    /* margin: 20px; */
+    text-align: center;
+}
+
+.underform{
+    position: relative;
+    top: 50px;
+}
+
+.title{
+    color:black;
+    border-radius: 20px;
+    text-shadow:2px 4px 5px rgb(54, 51, 51);
+    border: 1px solid black;
+    background-color: rgb(249, 250, 250);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.inp{
+    position: relative;
+    top:-20px;
+    /* font-style: oblique;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* display: flex; */
+    /* flex-direction: rows; */
+
+}
+#in1,#in2{
+    border-color: black;
+    margin: 30px;
+    width: 300px;
+    box-shadow:5px 4px 5px rgb(70, 69, 69);
+    height: 25px;
+}
+
+
+#add_la{
+    position: relative;
+    top: -70px;
+}
+#a{
+    border: 2px solid black;
+    box-shadow:5px 4px 5px rgb(70, 69, 69);
+}
+
+#dob{
+    
+    padding: 20px;
+    margin: 20px;
+}
+#dobin{
+    width: 250px;
+    height: 25px;
+    border: 2px solid black;
+    box-shadow:5px 4px 5px rgb(70, 69, 69);
+}
+
+
+.checkbox{
+    padding: 30px;
+}
+
+#btn{
+    height: 30px;
+    width: 100px;
+    position: relative;
+    left: 20px;
+    border-radius: 5px ;
+    box-shadow: 3px 3px 5px black;
+
+}
+
+
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang = 'en' >
+    <head>
+        <meta charset="UTF-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HEHHEHHEHE</title>
+    </head>
+
+    <style>
+        p {
+            color: royalblue
+        }
+        /*
+        div{
+            border-style:solid;
+            border-radius: 50   px;
+            background:cornsilk;
+            margin: 0;
+            position: absolute;
+            top: 40%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        */
+        .col {
+            background-color: rgb(10, 75, 75);
+            color: aliceblue;
+        }
+        .G {
+            background-color: rgb(63, 7, 33);
+            color: aliceblue;
+        }
+        
+        .name {
+            background-color: rgb(146, 0, 61);
+            color: aliceblue;
+        }
+        
+        tr,th,td {
+            border: 1px solid blueviolet;
+            background-color: pink;
+        }
+        table{
+            margin: 0;
+            position: absolute;
+            top: 60%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background-color: pink;
+        }
+            
+    </style>
+
+    <body>
+        <script>
+            function retrieveData(){
+               var iD=document.getElementById("ID");                 
+               var Name=document.getElementById("name");
+               var Addr=document.getElementById("addr");
+               var Date=document.getElementById("date");
+               var Gender=document.getElementById("gender");
+               var Typ=document.getElementById("typ");
+               /*
+               var temp={username:ID.value,password:name.value};
+               console.log(temp);
+                */
+               var tab=document.getElementById("datatable");
+              
+               tab.innerHTML+="<td class='pushintotable'>"+iD.value+"</td>"+"<td>"+Name.value+"</td>"+"<td>"+"Addr.value"+"</td>"+"<td>"+Date.value+"</td>"+"<td>"+Gender.value+"</td>"+"<td>"+Typ.value+"</td>";
+              
+                /*
+               var obj={name:element.value,order:num};
+               num++;
+               object.push(obj);
+               var tab=document.getElementById("datatable");
+               console.log(object);
+               //displayArray();
+               //download();
+               */
+           }
+           
+        </script>
+        <form id="this_form">
+            <div class="form">
+                <label>Enter ID:</label>
+                <input type = "text" id= "ID" value="ID"/>
+                <label>Name :</label>
+                <input type = "text" id= "name" value="name"/>
+                <label>DOJ:</label>
+                <input type = "datetime-local" id= "date" value="DOJ"/>
+                
+            </div>
+            <label>Select Gender</label>
+            <div class="buttons">
+                <label for="gender">Choose a Gender:</label>
+
+                <select name="Gender" id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                </select>
+            </div>
+            <label>Select Account type</label>
+            <div class="Typ">
+                
+                <select name="Typ" id="typ">
+                    <option value="SB">SB</option>
+                    <option value="CB">CB</option>
+                    <option value="FD">FD</option>
+                    <option value="Lone">Lone</option>
+                    </select>
+            </div>
+
+        </form>
+        <button type="button" form="this_form" onclick="retrieveData()">submit </button>
+
+
+        <div>    
+            <table id="datatable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>DOJ</th>
+                    <th>Gender</th>
+                    <th>type</th>
+                </tr>
+        </table>
+        
+        
+    </body>
+</html>

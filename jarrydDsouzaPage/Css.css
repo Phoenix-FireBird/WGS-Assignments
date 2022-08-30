@@ -1,0 +1,49 @@
+table{
+    font-family: arial,sans-serif;
+    width:100%;
+}
+
+td,th{
+    border:1px solid #dddddd;
+    text-align:left;
+    padding:8px;
+}
+
+Body {  
+    font-family: Calibri, Helvetica, sans-serif;  
+    background-color: rgb(141, 111, 250);  
+  }  
+  button {   
+         background-color: #bfffc1;   
+         width: 100%;  
+          color: rgb(158, 6, 6);   
+          padding: 15px;   
+          margin: 10px 0px;   
+          border: none;   
+          cursor: pointer;   
+           }   
+   form {   
+          border: 3px solid #f1f1f1;   
+      }   
+   input[type=text] {   
+          width: 100%;   
+          margin: 8px 0;  
+          padding: 12px 20px;   
+          display: inline-block;   
+          border: 2px solid green;   
+          box-sizing: border-box;   
+      }  
+   button:hover {   
+          opacity: 0.7;   
+      }   
+    .deletebtn {   
+          width: auto;   
+          padding: 10px 18px;  
+          margin: 10px 5px;  
+      }   
+          
+       
+   .container {   
+          padding: 25px;   
+          background-color: lightblue;  
+      }

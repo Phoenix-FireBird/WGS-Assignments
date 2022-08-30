@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="Css.css">
+        <script>
+            var num=0;
+            var arre=[];
+           
+            function displayArray(){
+               for(let ctr=0;ctr<arre.length;ctr++){
+                   console.log(arre[ctr]);
+                   
+                }
+               }
+           
+            function check(){
+               var ele1=document.getElementById("check1");
+               var ele2=document.getElementById("check2");
+               if(ele1.checked==true){
+                   return ele1.value;
+               }
+               else{
+                   return ele2.value;
+               }
+           }
+            function rad(){
+               var ele1=document.getElementById("rad1");
+               var ele2=document.getElementById("rad2");
+               if(ele1.checked==true){
+                   return ele1.value;
+               }
+               else{
+                   return ele2.value;
+               }
+           }
+           function loop(){
+               var element=document.getElementById("txt1");
+               var element2=document.getElementById("txt2");
+               var element3=document.getElementById("txt3");
+               var element4=document.getElementById("txt4");
+               var element5=rad();
+               var element6=check();
+               var temp={iD:iD.value,variable2:element2.value,variable3:element3.value,variable4:element4.value,variable5:element5,variable6:element6};
+               arre.push(temp);
+               console.log(arre);
+               console.log(arre.length);
+               /*
+               for(let i=0;i<arre.length;i++){
+               var tab=document.getElementById("datatable");
+               
+               tab.innerHTML+="<tr>"+"<td>"+temp.iD+"</td>"+"<td>"+temp.variable2+"</td>"+
+                "<td>"+temp.variable3+"</td>"+"<td>"+temp.variable4+"</td>"+"<td>"+temp.variable5+"</td>"+"<td>"+temp.variable6+"</td>"+"</tr>";
+               
+                }
+                */
+           }
+           function display(){
+            var tab=document.getElementById("datatable");
+            tab.innerHTML+="<tr>"+"<td>"+arre[0].iD+"</td>"+"<td>"+arre[0].variable2+"</td>"+
+               "<td>"+arre[0].variable3+"</td>"+"<td>"+arre[0].variable4+"</td>"+"<td>"+arre[0].variable5+"</td>"+"<td>"+arre[0].variable6+"</td>"+"</tr>";
+               
+           
+            for(let i=1;i<arre.length;i++){
+               
+               tab.innerHTML+="<table> <tr>"+"<td>"+arre[i].iD+"</td>"+"<td>"+arre[i].variable2+"</td>"+
+                "<td>"+arre[i].variable3+"</td>"+"<td>"+arre[i].variable4+"</td>"+"<td>"+arre[i].variable5+"</td>"+"<td>"+arre[i].variable6+"</td>"+"</tr></table>";
+               
+                }
+            /*
+            for(let i=0;i<object.length;i++){
+               var tab=document.getElementById("datatable");
+               console.log(tab);
+               tab.innerHTML+="<tr>"+"<td>"+object[i].iD+"</td>"+"<td>"+object[i].variable2+"</td>"+"<td>"+object[i].variable3+"</td>"+"<td>"+object[i].variable4+"</td>"+"<td>"+object[i].variable5+"</td>"+"<td>"+object[i].variable6+"</td>"+"</tr>";
+               }
+               */
+           }
+           function retdata(){
+               var iD=document.getElementById("ID");
+               var element2=document.getElementById("txt2");
+               var element3=document.getElementById("txt3");
+               var element4=document.getElementById("txt4");
+               var element5=rad();
+               var element6=check();
+               var temp={iD:iD.value,variable2:element2.value,variable3:element3.value,variable4:element4.value,variable5:element5,variable6:element6};
+               arre.push(temp);
+               console.log(arre.length);
+               num++;
+               //var tab=document.getElementById("datatable");
+               displayArray();
+               /*console.log(tab);
+               tab.innerHTML="<tr>"+"<td>"+temp.iD+"</td>"+"<td>"+temp.variable2+"</td>"+
+                "<td>"+temp.variable3+"</td>"+"<td>"+temp.variable4+"</td>"+"<td>"+temp.variable5+"</td>"+"<td>"+temp.variable6+"</td>"+"</tr>";
+                */
+                for(let i=0;i<object.length;i++){
+               var tab=document.getElementById("datatable");
+               console.log(tab);
+               tab.innerHTML+="<tr>"+"<td>"+object[i].iD+"</td>"+"<td>"+object[i].variable2+"</td>"+"<td>"+object[i].variable3+"</td>"+"<td>"+object[i].variable4+"</td>"+"<td>"+object[i].variable5+"</td>"+"<td>"+object[i].variable6+"</td>"+"</tr>";
+               }
+           }
+           
+        </script>
+    </head>
+    <body>
+        <div>
+            <label>ActID:</label>
+            <input id="iD" type="text" value=""/>
+            <br>
+            <label>ActName:</label>
+            <input id="txt2" type="text" value=""/>
+            <br>
+            <label>Address:</label>
+            <textarea id="txt3" rows="4" cols="20" value="">enter address</textarea> 
+            <br>
+            <label>DOB</label>
+            <input id="txt4" type="date" value=""/>
+            <br>
+            <label>Gender </label>
+            <input id="rad1" type="radio" name="gender" value="Male">Male</input>
+            <input id="rad2" type="radio" name="gender" value="Female">Female</input>
+            <br>
+            <label>AcctType:</label>
+            <input id="check1" type="checkbox" name="checkbox" value="SB">SB</input>
+            <input id="check2" type="checkbox" name="checkbox" value="FD">FD</input>
+            <br>
+            <!--button onclick="retdata(),display()" type="submit">Submit</@button-->
+            <button onclick="loop()" type="button">Submit</button>
+            <button onclick="display()" type="button">Disp</button>
+
+        </div>
+        <div>
+            <table >
+                <tr>
+                    <th>ActID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Type</th>
+
+                    
+                </tr>
+                <table id = "datatable">
+                <!--table >
+                    <tr>
+                        <td id=arre[0].iD></td> <td id=arre[0].variable2></td><td id=arre[i].variable3></td><td id=arre[i].variable4></td><td id=arre[i].variable5></td><td></td>
+                    </tr>
+                    <tr>
+                        <td></td> <td></td><td></td><td></td><td></td><td></td>
+                    </tr>;
+                       
+                </!--table-->
+            </table>
+        </div>
+    </body>
+</html>
