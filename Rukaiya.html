@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang = 'en' >
+    <head>
+        <meta charset="UTF-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bank Account Information</title>
+    </head>
+
+    <style>
+        td:nth-child(even), th:nth-child(even) {
+        background-color: #D6EEEE;
+        }
+        table{
+            border-style:solid;
+            border-radius: 50 px;
+            margin: 0;
+            position: absolute;
+            top: 80%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        } 
+    </style>
+    <body>
+        <script>
+            function del(){ 
+                var tab=document.getElementById("datatable");
+                tab.deleteRow(1);
+             } 
+
+             function retrieveData(){
+               var iD=document.getElementById("ID");                 
+               var Name=document.getElementById("name");
+               var Addr=document.getElementById("addr");
+               var Date=document.getElementById("date");
+               var Gender=document.getElementById("gender");
+               var Typ=document.getElementById("type");
+               
+               var tab=document.getElementById("datatable");
+              
+               tab.innerHTML+="<td class='pushintotable'>"+iD.value+"</td>"+"<td>"+Name.value+"</td>"+"<td>"+"Addr.value"+"</td>"+"<td>"+Date.value+"</td>"+"<td>"+Gender.value+"</td>"+"<td>"+Typ.value+"</td>";
+              
+           }
+            function cls(){
+            {
+            var tab=document.getElementById("datatable");
+            var obj=object.length;
+            console.log(obj);
+            for(i=obj;i!=0;i--){
+            tab.deleteRow(i); 
+            }
+            }
+            }
+
+            function retrieveData(){
+               var iD=document.getElementById("ID");                 
+               var Name=document.getElementById("name");
+               var Addr=document.getElementById("addr");
+               var Date=document.getElementById("date");
+               var Gender=document.getElementById("gender");
+               var Typ=document.getElementById("type");
+               
+               var tab=document.getElementById("datatable");
+              
+               tab.innerHTML+="<td class='pushintotable'>"+iD.value+"</td>"+"<td>"+Name.value+"</td>"+"<td>"+"Addr.value"+"</td>"+"<td>"+Date.value+"</td>"+"<td>"+Gender.value+"</td>"+"<td>"+Typ.value+"</td>";
+              
+           }
+           
+        </script>
+        <form id="this_form">
+            <div class="form">
+                <label>Account Number:</label><br>
+                <input type = "text" id= "ID" />
+                <br>
+                <br>
+            
+                <label>Name :</label><br>
+                <input type = "text" id= "name" />
+                <br>
+                <br>
+                
+                <label>Date Of Joining :</label><br>
+                <input type = "datetime-local" id= "date" />
+                <br>
+                <br>
+                <br>
+                
+                <label for="gender">Choose Gender:</label><br>
+                <select name="Gender" id="gender">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                
+                <label>Whats Your Account type ?</label><br>
+                <select name="Typ" id="typ">
+                    <option value="SB">SB</option>
+                    <option value="CB">CB</option>
+                    <option value="FD">FD</option>
+                    <option value="Lone">Lone</option>
+                </select>
+                <br>
+                <br>
+            </div>
+
+        </form>
+        <button type="button" form="this_form" onclick="retrieveData()">UPDATE</button>
+        <!-- <button onclick="cls()" type="clear">CLEAR</button> -->
+        <button onclick="del()" type="delete" class="deletebtn">DELETE</button>
+        
+        <br>
+
+
+            <table id="datatable">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Date Of Joining</th>
+                    <th>Gender</th>
+                    <th>type</th>
+                </tr>
+        </table>
+    
+        
+    </body>
+</html>
