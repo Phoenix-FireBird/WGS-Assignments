@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang = 'en' >
+    <head>
+        <title>Bank Account Information</title>
+    </head>
+
+    <style>
+        td:nth-child(even), th:nth-child(even) {
+        background-color: #D6EEEE;
+        }
+        table{
+            border-style:solid;
+            border-radius: 50 px;
+            margin: 0;
+            position: absolute;
+            top: 80%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        } 
+    </style>
+    <body>
+        <form id="this_form">
+            <div class="form">
+                <label>Account Number:</label><br>
+                <input type = "text" id= "ID" />
+                <br>
+                <br>
+            
+                <label>Name :</label><br>
+                <input type = "text" id= "name" />
+                <br>
+                <br>
+                
+                <label>Location :</label><br>
+                <input type = "text" id="address" />
+                <br>
+                <br>
+                
+                <label>Date Of Joining :</label><br>
+                <input type = "datetime-local" id= "date" />
+                <br>
+                <br>
+            
+                
+                <label for="gender">Choose Gender:</label><br>
+                <select name="Gender" id="gender">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+                </select>
+                <br>
+                <br>
+                
+                <label>Whats Your Account type ?</label><br>
+                <select name="Typ" id="typ">
+                    <option value="FD">FD</option>
+                    <option value="CB">CB</option>
+                    <option value="SB">SB</option>
+                </select>
+                <br>
+                <br>
+            </div>
+        </form>
+        <script>
+            function Create() {
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(0);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = "NEW CELL1";
+                cell2.innerHTML = "NEW CELL2";
+            }
+
+            function Delete() {
+                document.getElementById("myTable").deleteRow(1);
+            } 
+
+        </script>
+        <br>
+        <table id="datatable">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Date Of Joining</th>
+                <th>Gender</th>
+                <th>type</th>
+            </tr>
+        </table>
+            <button type="button" onclick="retrieveData()">UPDATE</button>
+            <!-- <button onclick="cls()" type="clear">CLEAR</button> -->
+            <button onclick="del()" type="delete" class="deletebtn">DELETE</button>
+    </body>
+</html>
