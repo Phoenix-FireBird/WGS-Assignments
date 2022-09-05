@@ -1,19 +1,25 @@
-package MyPackage;
+package com.task;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-
-
+import java.util.StringTokenizer;
 
 public class Coin {
-	String Country;
-	String Denomination;
-	int Year_Of_Minting;
-	int Current_Value;
-	String Acquired_Date;
+
+	String country;
+	String denomination;
+	int yearOfMinting;
+	int currentValue;
+	String acquiredDate;
 	
-	Set<Coin> coins = new HashSet();
+	Set<Coin> coins = new HashSet<Coin>();
 	Scanner sc = new Scanner(System.in);
 	
 	public Coin() {
@@ -21,55 +27,58 @@ public class Coin {
 	}
 	
 	public Coin(String v2,String v3,int v4,int v5,String v6) {
-		Country = v2;
-		Denomination = v3;
-		Year_Of_Minting = v4;
-		Current_Value = v5;
-		Acquired_Date = v6;
+		country = v2;
+		denomination = v3;
+		yearOfMinting = v4;
+		currentValue = v5;
+		acquiredDate = v6;
 	}
 
 
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 
-	public void setCountry(String Country) {
-		this.Country = Country;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public String getDenomination() {
-		return Denomination;
+		return denomination;
 	}
 
-	public void setDenomination(String Denomination) {
-		this.Denomination = Denomination;
+	public void setDenomination(String denomination) {
+		this.denomination = denomination;
 	}
 
-	public int getYear_Of_Minting() {
-		return Year_Of_Minting;
+	public int getYearOfMinting() {
+		return yearOfMinting;
 	}
 
-	public void setYear_Of_Minting(int Year_Of_Minting) {
-		this.Year_Of_Minting = Year_Of_Minting;
+	public void setYearOfMinting(int yearOfMinting) {
+		this.yearOfMinting = yearOfMinting;
 	}
 
-	public int getCurrent_Value() {
-		return Current_Value;
+	public int getCurrentValue() {
+		return currentValue;
 	}
 
 	public void setCurrentValue(int currentValue) {
-		this.Current_Value = currentValue;
+		this.currentValue = currentValue;
 	}
 
 	public String getAcquiredDate() {
-		return Acquired_Date;
+		return acquiredDate;
 	}
 
-	public void setAcquired_Date(String Acquired_Date) {
-		this.Acquired_Date = Acquired_Date;
+	public void setAcquiredDate(String acquiredDate) {
+		this.acquiredDate = acquiredDate;
 	}
-
-	public void addition() {
+	
+	// To add Coin 
+	
+	public void addition(){
+		
 		System.out.println("How many Coins do you want to add?");
 		int coinsAdd = sc.nextInt();
 		System.out.println("Enter CoinId,Country,Denomination,Year,Value,AcquiredDate");
@@ -77,35 +86,36 @@ public class Coin {
 		{
 			coins.add(new Coin(sc.next(),sc.next(),sc.nextInt(),sc.nextInt(),(sc.next())));
 		}
-
-		
 		
 	}
-
+	
+	// To search Coin
+	
 	public void search() {
 		int choice;
 		System.out.println("Please Choose One Option:\n"
-				+ "1.Country + Denomination\r\n"
-				+ "2.Country + Year of Minting\r\n"
-				+ "3.Country + Denomination + Year of Minting\r\n"
-				+ "4.Acquired Date + Country\r\n"
+				+ "1.	Country + Denomination\r\n"
+				+ "2.	Country + Year of Minting\r\n"
+				+ "3.	Country + Denomination + Year of Minting\r\n"
+				+ "4.	Acquired Date + Country\r\n"
 				+ "");
 		choice=sc.nextInt();
+		
 		switch (choice) {
 		case 1: {
-			coins.forEach(c -> {
+			coins.forEach(c1 -> {
 				System.out.println("Enter Country Name:");
 				String country=sc.next();
 				System.out.println("Enter Denomination:");
 				String denomination=sc.next();
-				if(c.getCountry().equalsIgnoreCase(country) &&
-						c.getDenomination().equalsIgnoreCase(denomination)) 
+				if(c1.getCountry().equalsIgnoreCase(country) &&
+						c1.getDenomination().equalsIgnoreCase(denomination)) 
 				{
-					System.out.println(c.getCountry());
-					System.out.println(c.getDenomination());
-					System.out.println(c.getYear_Of_Minting());
-					System.out.println(c.getCurrent_Value());
-					System.out.println(c.getAcquiredDate());
+					System.out.println(c1.getCountry());
+					System.out.println(c1.getDenomination());
+					System.out.println(c1.getYearOfMinting());
+					System.out.println(c1.getCurrentValue());
+					System.out.println(c1.getAcquiredDate());
 				}
 			});
 			break;
@@ -115,15 +125,15 @@ public class Coin {
 			String country=sc.next();
 			System.out.println("Enter Year of Minting:");
 			int minting=sc.nextInt();
-			coins.forEach(c -> {
-				if(c.getCountry().equalsIgnoreCase(country) &&
-						c.getYear_Of_Minting()==minting) 
+			coins.forEach(c1 -> {
+				if(c1.getCountry().equalsIgnoreCase(country) &&
+						c1.getYearOfMinting()==minting) 
 				{
-					System.out.println(c.getCountry());
-					System.out.println(c.getDenomination());
-					System.out.println(c.getYear_Of_Minting());
-					System.out.println(c.getCurrent_Value());
-					System.out.println(c.getAcquiredDate());
+					System.out.println(c1.getCountry());
+					System.out.println(c1.getDenomination());
+					System.out.println(c1.getYearOfMinting());
+					System.out.println(c1.getCurrentValue());
+					System.out.println(c1.getAcquiredDate());
 				}
 			});
 			break;
@@ -135,16 +145,16 @@ public class Coin {
 			String denomination=sc.next();
 			System.out.println("Enter Year of Minting:");
 			int minting=sc.nextInt();
-			coins.forEach(c -> {
-				if(c.getCountry().equalsIgnoreCase(country) &&
-						c.getYear_Of_Minting()==minting &&
-								c.getDenomination().equalsIgnoreCase(denomination)) 
+			coins.forEach(c1 -> {
+				if(c1.getCountry().equalsIgnoreCase(country) &&
+						c1.getYearOfMinting()==minting &&
+								c1.getDenomination().equalsIgnoreCase(denomination)) 
 				{
-					System.out.println(c.getCountry());
-					System.out.println(c.getDenomination());
-					System.out.println(c.getYear_Of_Minting());
-					System.out.println(c.getCurrent_Value());
-					System.out.println(c.getAcquiredDate());
+					System.out.println(c1.getCountry());
+					System.out.println(c1.getDenomination());
+					System.out.println(c1.getYearOfMinting());
+					System.out.println(c1.getCurrentValue());
+					System.out.println(c1.getAcquiredDate());
 				}
 			});
 			break;
@@ -154,15 +164,15 @@ public class Coin {
 			String acquiredDate=sc.next();
 			System.out.println("Enter Country Name:");
 			String country=sc.next();
-			coins.forEach(b -> {
-				if(b.getCountry().equalsIgnoreCase(country) &&
-						b.getAcquiredDate().equals(acquiredDate)) 
+			coins.forEach(c1 -> {
+				if(c1.getCountry().equalsIgnoreCase(country) &&
+						c1.getAcquiredDate().equals(acquiredDate)) 
 				{
-					System.out.println(b.getCountry());
-					System.out.println(b.getDenomination());
-					System.out.println(b.getYear_Of_Minting());
-					System.out.println(b.getCurrent_Value());
-					System.out.println(b.getAcquiredDate());
+					System.out.println(c1.getCountry());
+					System.out.println(c1.getDenomination());
+					System.out.println(c1.getYearOfMinting());
+					System.out.println(c1.getCurrentValue());
+					System.out.println(c1.getAcquiredDate());
 				}
 			});
 			break;
@@ -170,11 +180,10 @@ public class Coin {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + choice);
 		}
-	
-		
-		
 	}
-
+	
+	// To display Coin on basis of Criteria 
+	
 	public void display() {
 		int ch;
 		System.out.println("Please Enter your choice:\n"+""
@@ -187,14 +196,14 @@ public class Coin {
 		case 1: {
 			System.out.println("Enter Country Name:");
 			String country=sc.next();
-			coins.forEach(ab -> {
-				if(ab.getCountry().equalsIgnoreCase(country)) 
+			coins.forEach(c1 -> {
+				if(c1.getCountry().equalsIgnoreCase(country)) 
 				{
-					System.out.println(ab.getCountry());
-					System.out.println(ab.getDenomination());
-					System.out.println(ab.getYear_Of_Minting());
-					System.out.println(ab.getCurrent_Value());
-					System.out.println(ab.getAcquiredDate());
+					System.out.println(c1.getCountry());
+					System.out.println(c1.getDenomination());
+					System.out.println(c1.getYearOfMinting());
+					System.out.println(c1.getCurrentValue());
+					System.out.println(c1.getAcquiredDate());
 				}
 			});
 			break;			
@@ -202,29 +211,31 @@ public class Coin {
 		case 2: {
 			System.out.println("Enter Year of Minting:");
 			int minting=sc.nextInt();
-			coins.forEach(c -> {
-				if(c.getYear_Of_Minting()==minting) 
+			coins.forEach(c1 -> {
+				if(c1.getYearOfMinting()==minting) 
 				{
-					System.out.println(c.getCountry());
-					System.out.println(c.getDenomination());
-					System.out.println(c.getYear_Of_Minting());
-					System.out.println(c.getCurrent_Value());
-					System.out.println(c.getAcquiredDate());
+					System.out.println(c1.getCountry());
+					System.out.println(c1.getDenomination());
+					System.out.println(c1.getYearOfMinting());
+					System.out.println(c1.getCurrentValue());
+					System.out.println(c1.getAcquiredDate());
 				}
 			});
 			break;
+			
+			
 		}
 		case 3: {
 			System.out.println("Enter Current Value:");
 			int value=sc.nextInt();
-			coins.forEach(a -> {
-				if(a.getCurrent_Value()==value) 
+			coins.forEach(c1 -> {
+				if(c1.getCurrentValue()==value) 
 				{
-					System.out.println(a.getCountry());
-					System.out.println(a.getDenomination());
-					System.out.println(a.getYear_Of_Minting());
-					System.out.println(a.getCurrent_Value());
-					System.out.println(a.getAcquiredDate());
+					System.out.println(c1.getCountry());
+					System.out.println(c1.getDenomination());
+					System.out.println(c1.getYearOfMinting());
+					System.out.println(c1.getCurrentValue());
+					System.out.println(c1.getAcquiredDate());
 				}
 			});
 			break;
@@ -233,11 +244,36 @@ public class Coin {
 			throw new IllegalArgumentException("Unexpected value: " + ch);
 		}
 	}
+	
+	// To Bulk Upload
+	
+	public void bulkUpload() 
+	{
 		
+		try{
+            StringTokenizer st=null;
+            
+            FileReader inputFileReader = new FileReader("C:\\JAVAFILES\\TASK-1\\src\\com\\task\\cointable");
+            BufferedReader inputStream = new BufferedReader(inputFileReader);
+            String inLine = null;
+            try {
+				while((inLine =  inputStream.readLine())!=null){
+				    st = new StringTokenizer(inLine, ",");
+				    coins.add(new Coin(st.nextToken(),st.nextToken(),Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()),st.nextToken()));
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        }
+        catch (FileNotFoundException e)
 		
+         {  // This block executed if the file is not found
+            // and then the program exits
+        System.out.println("File not found.");
+        System.exit(0);
+        }
+	}
 	
 	
-
 	
-
 }
