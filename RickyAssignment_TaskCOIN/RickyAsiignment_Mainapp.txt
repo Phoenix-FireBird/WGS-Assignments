@@ -1,0 +1,27 @@
+package taskk;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class MainApp{
+	
+	public static void main(String[] args) 
+		throws InputMismatchException {
+		Coin co=new Coin();
+		Scanner s = new Scanner(System.in);
+		boolean bo = true;
+	   while(bo) {	 
+		 System.out.println("Enter the Option you want :");
+		 System.out.println("1.  Add the coins you want to");
+		 System.out.println("2. Search the  Coins you want to");
+		 int coice=s.nextInt();
+		 switch(coice)
+			{case 1: co.Adding();
+				   break;
+			case 2: co.Searching();
+				   break;
+			default:
+			throw new IllegalArgumentException("Invalid Input: " + coice);
+		 }
+	}
+  }
+}
