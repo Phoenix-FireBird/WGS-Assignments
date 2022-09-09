@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .abc {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: auto;
+        }
+
+        .xyz {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: auto;
+        }
+    </style>
+
+    <script>
+        var num = 1;
+        
+
+        object = [];
+
+        function retrieveData() {
+            var element1 = document.getElementById("accId");
+            var element2 = document.getElementById("accName");
+            var element3 = document.getElementById("adr");
+            var element4 = document.getElementById("dob");
+
+            var temp = {
+
+                order: num,
+                accountId: element1.value,
+                accountName: element2.value,
+                address: element3.value,
+                DOB: element4.value,
+
+
+            };
+            num++;
+            object.push(temp);
+
+            var output = document.getElementById("dataTable")
+
+            output.innerHTML = "<tr><th class='xyz'>Sr.No.</th>" +
+                "<th class='xyz'>ActID</th>" +
+                "<th class='abc'>ActName</th>" +
+                "<th class='abc'>Address</th>" +
+                "<th class='abc'>DOB</th></tr>";
+
+            for (let i = 0; i < object.length; i++) {
+                output
+                    .innerHTML += //"<tr><th class='xyz'>Sr.No.</th>"+"<th class='xyz'>ActID</th>"+ "<th class='abc'>ActName</th>" + "<th class='abc'>Address</th></tr>"+
+                    "<tr><td class='abc'>" + object[i].order +
+                    "<td class='abc'>" + object[i].accountId + "</td>" +
+                    "<td class='abc'>" + object[i].accountName + "</td>" +
+                    "<td class='abc'>" + object[i].address + "</td>" +
+                    "<td class='abc'>" + object[i].DOB + "</td>";;
+            }
+
+        }
+
+        
+        // function retrieveData() {
+        //     var element = document.getElementById("txt");
+        //     console.log(element.value);
+        //     var output = document.getElementById("txt2");
+        //     output.innerHTML = "Hello";
+        //     var temp = {
+        //         variable: element.value
+        //     };
+        //     console.log(temp);
+
+        function onDelete() { 
+            var element5 = document.getElementById("rowNum");
+            document.getElementById("dataTable").deleteRow(element5.value);
+            
+            for (let i = 1; i < object.length; i++) {
+                
+                
+                
+                delete object[i].accountId
+                delete  object[i].accountName
+                delete  object[i].address 
+                delete object[i].DOB 
+                
+                
+                
+            }
+            
+            
+        }
+    
+
+    </script>
+</head>
+
+<body style =" background-color: powderblue;">
+<h1 style="font-size:30px;">Enter The Details</h1>
+    <div style="position: relative; top: 50px; left : 120px ">
+
+        <div class="left" style="position: absolute; top: 20px;">
+
+            <label style="padding-right: 40px;">Account ID </label>
+            <input type="text" id="accId">
+            <!-- <input type="button" onclick="retrieveData()"><br> -->
+            <br>
+            <br>
+            <br>
+            <label style="padding-right: 20px;">Account Name</label>
+            <input type="text" id="accName">
+            <br>
+            <label style="padding-right: 70px;">Address</label>
+            <textarea id="adr" class="add" type="text" cols="30" rows="3" style="position: relative; top: 50px;" ></textarea>
+        </div>
+
+        <div class="right" style="position: relative; left: 700px; top: 20px;">
+
+            <label style="padding-right: 100px;">DOB </label>
+            <input type="date" id="dob">
+            <br>
+            <br>
+            <br>
+            <label style="padding-right: 80px;">Gender</label>
+            <input type="radio" id="GENDER" name="gender" value="HTML">
+
+            <label for="male">Male</label>
+
+            <input type="radio" id="GENDER" name="gender">
+
+            <label for="female">Female</label><br>
+            <br>
+            <br>
+            <label style="padding-right: 40px;" id="acctype">Account Type</label>
+            <input type="checkbox">
+            <label>SB</label>
+            <input type="checkbox">
+            <label>FD</label><br>
+            <br>
+            <br>
+
+
+            <div class="check" style="position: relative; left : 135px;">
+                <input type="checkbox">
+
+                <label>CB</label>
+                <input type="checkbox">
+                <label>LOAN</label>
+            </div>
+            <button style="position: relative; left : 170px; top : 70px; padding : 10px 20px 10px"
+                onclick="retrieveData()">SUBMIT</button>
+                 
+
+
+        </div>
+    </div>
+
+    <div style= "border: MediumSeaGreen; border-width : 3px; border-style:solid ; padding-bottom: 75px; position: relative ;top :275px; ">
+        <div id="msg1" style="text-align: center;"></div>
+
+        <table id="dataTable">
+
+        </table>
+
+    </div>
+
+    
+
+
+
+
+</body>
+
+</html>
