@@ -1,0 +1,43 @@
+Runner:
+
+create table Runner(id number,name varchar(20),city varchar(20),Primary Key(id));
+
+select * from runner;
+
+desc runner;
+
+
+Daily Activity:
+
+create table DailyActivity(RunDate date,runnerid number,distance number,cityid number);
+
+alter table DailyActivity add constraint fk Foreign Key(runnerid) References runner(id);
+
+insert into DailyActivity values('08-sep-22',1,10,1);
+
+
+City:
+
+create table City(id number,name varchar(20),region varchar(20),Primary Key(id));
+
+alter table DailyActivity add constraint fk_c Foreign Key(cityid) References city(id);
+
+insert into city values(101,'Mumbai','Bus stand');
+
+insert into city values(102,'Thane','VPM College');
+
+insert into city values(103,'Diva','Railway station');
+
+insert into city values(104,'Kalyan','Dhabha');
+
+
+
+
+
+
+
+
+
+
+
+
