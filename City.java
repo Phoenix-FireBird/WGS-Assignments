@@ -1,36 +1,38 @@
-package com.assign3;
+package mypack;
 
 public class City {
-
-	int City_id;
-	String Name;
-	String Region;
+	int City_Id;
+	String City_Name;
+	String City_Region;
 	
-	public City(){
+	public void City()
+	{
 		
-		
 	}
-    public City(int a,String b,String c){
-		City_id=a;
-		Name=b;
-		Region=c;
-		}
-	public int getCity_id() {
-		return City_id;
+	public void City(int v1, String v2, String v3)
+	{
+		City_Id=v1;
+		City_Name=v2;
+		City_Region=v3;
 	}
-	public void setCity_id(int city_id) {
-		City_id = city_id;
+	public int getCity_Id() {
+		return City_Id;
 	}
-	public String getName() {
-		return Name;
+	public void setCity_Id(int city_Id) {
+		City_Id = city_Id;
 	}
-	public void setName(String name) {
-		Name = name;
+	public String getCity_Name() {
+		return City_Name;
 	}
-	public String getRegion() {
-		return Region;
+	public void setCity_Name(String city_Name) {
+		City_Name = city_Name;
 	}
-	public void setRegion(String region) {
-		Region = region;
+	public String getCity_Region() {
+		return City_Region;
 	}
+	public void setCity_Region(String city_Region) {
+		City_Region = city_Region;
+	}
+	
+
 }
