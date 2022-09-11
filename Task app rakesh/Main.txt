@@ -1,0 +1,77 @@
+package Com.app;
+
+public static void main(String[] args) throws Exception
+		{
+			Demo d = new Demo();
+			Demo d1 = new Demo();
+			Demo d2= new Demo();
+			Demo d3= new Demo();
+			Demo d4= new Demo();
+			Demo d5= new Demo();
+			d.runner();
+			d1.listAllRunner();
+			d2.dailyActivityRunner();
+			d3.runningDuration();
+			d4.totalRunner();
+			d5.avgRunner();
+			
+			boolean exit=false;
+			
+			Scanner sc = new Scanner(System.in);
+
+
+			while (!exit)
+			{
+				System.out.println("1.Register the new runner");
+				System.out.println("2.List all the runner");
+				System.out.println("3.Upload daily activity of the runner");
+				System.out.println("4.Upload running in db using csv");
+				System.out.println("5.Find the total runner per region,per city");
+				System.out.println("6.Find average runs on any given day");
+				int a = sc.nextInt();
+				switch(a)
+				{
+				case 1:
+				{
+				d.runner();
+				break;
+				}
+				case 2:
+				{
+				d1.listAllRunner();
+				break;
+				}
+				case 3:
+				{
+				d2.dailyActivityRunner();
+				break;
+				}
+				case 4:
+				{
+				d3.runningDuration();
+				break;
+				}
+				case 5:
+				{
+				d4.totalRunner();
+				break;
+				}
+				case 6:
+				{
+				d5.avgRunner();
+				break;
+				}
+				default:{
+				System.out.println("Invalid case option");
+						}
+							
+				}
+			
+			
+			
+			
+			
+			
+		}
+		}
+}

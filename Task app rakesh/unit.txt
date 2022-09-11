@@ -1,0 +1,16 @@
+package Com.app;
+
+import static org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+class Junit {
+
+	@Test
+	void totalRunner() throws Exception {
+        Demo d2= new Demo();
+		d2.totalRunner();
+		assertSame(1,2);
+				
+	}
+
+}
