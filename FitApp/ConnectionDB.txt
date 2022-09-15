@@ -1,0 +1,4 @@
+com.mysql.cj.jdbc.Driver
+jdbc:mysql://localhost:3306/fitapp
+root
+Inayat@92
