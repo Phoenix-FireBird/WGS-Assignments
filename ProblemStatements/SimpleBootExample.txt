@@ -1,0 +1,9 @@
+Given that:
+Student entity: id, name, score1, score2, score3
+
+Create a boot application to
+
+1. Add a score for new student
+2. List all scores with grades
+3. Find a Student with name and update his/her details
+4. Remove a specific student using name
